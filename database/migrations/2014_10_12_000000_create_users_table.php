@@ -13,11 +13,23 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->integer('role')->default(2); // 1 = admin, 2 = warga
+            $table->foreignId('id_kota');
+            $table->foreignId('id_kecamatan');
+            $table->integer('nik')->unique();
+            $table->string('nama');
+            $table->string('kota_kelahiran');
+            $table->date('tanggal_lahir');
+            $table->string('pekerjaan');
+            $table->boolean('status_perkawinan')->default(false);
+            $table->integer('pendapatan_perbulan');
+            $table->string('nomer_telfon');
+            $table->string('pendidikan_terakhir');
+            $table->integer('tanggungan_anak_keluarga');
+            $table->text('alamat_lengkap');
+            $table->string('image')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->boolean('status_approve')->default(false);
             $table->timestamps();
         });
     }
