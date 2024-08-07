@@ -5,20 +5,17 @@
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">
-            @if (auth()->user()->role === 1)
+            {{-- @if (auth()->user()->role === 1)
                 Welcome back Admin, {{ auth()->user()->nama }}
-            @elseif (auth()->user()->role === 2)
+            @elseif (auth()->user()->role === 2) --}}
                 Welcome back Bapak/Ibu, {{ auth()->user()->nama }}
-            @else
+            {{-- @else
                 Welcome back {{ auth()->user()->nama }}
-            @endif
+            @endif --}}
         </h1>
     </div>
     <h1 class="mt-4">Tables</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-        <li class="breadcrumb-item active">Tables</li>
-    </ol>
+
     <div class="card mb-4">
         <div class="card-body">
             DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the

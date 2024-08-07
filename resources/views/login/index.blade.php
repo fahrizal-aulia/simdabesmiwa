@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel='icon' type='image/png' href='image/favicon.png'>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -144,7 +145,7 @@
                 <button type="submit" class="btn">Login</button>
             </form>
             <div class="register-link">
-                <p>Don't have an account? <a href="#">Register here</a></p>
+                <p>Don't have an account? <a href="/register">Register here</a></p>
             </div>
         </div>
     </div>

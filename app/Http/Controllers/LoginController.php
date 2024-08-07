@@ -21,10 +21,14 @@ class LoginController extends Controller
         'nik'=>'required',
         'password'=> 'required'
     ]);
-        if(Auth::attempt($credentials)){
-
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            $user = Auth::user();
+            if ($user->role === 1) {
+                return redirect('/dashboard');
+            } elseif ($user->role === 2) {
+                return redirect()->intended('/');
+            }
         }
         return back()->with('loginError', 'Login Failed!');
     }

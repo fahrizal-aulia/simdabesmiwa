@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 
 /*
@@ -15,10 +16,27 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('warga');
-});
 
+// Route::get('/', function () {
+//     return view('warga.dashboard');
+// })->middleware('auth');
+
+
+// login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+// dashboard warga
+Route::get('/', function () {
+    return view('warga.dashboard');
+})->middleware('auth');
+
+
+//dashboard admin
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware('auth');
