@@ -1,0 +1,18 @@
+membuat database
+
+membuat login page
+membuat register page
+
+membuat admin:
+dashboard admin
+profil
+pendaftar
+datawarga
+Data keberangkatan
+Data kepulangan(amndan)
+
+
+Warga:
+Profil (my account)(amndan)
+Data keberangkatan
+data Kepulangan(amndan)
