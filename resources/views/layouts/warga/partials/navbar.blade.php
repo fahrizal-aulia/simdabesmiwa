@@ -13,12 +13,18 @@
                     Welcome back, {{ auth()->user()->nama }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="/dashboard"><i
+                    <li><a class="dropdown-item" href="/profile"><i
                                 class="bi bi-layout-text-sidebar-reverse"></i>My
-                            Dashboard</a></li>
+                            Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
+                    <li><a class="dropdown-item" href="/"><i
+                        class="bi bi-layout-text-sidebar-reverse"></i>My
+                    Dashboard</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
                     <li>
                         <form action="/logout" method="post">
                             @csrf
@@ -42,7 +48,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -55,7 +61,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="layout-static.html">Data Keberangkatan</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Data kepulangan</a>
+                                    <a class="nav-link" href="/inputkepulangan">Data kepulangan</a>
                                 </nav>
                             </div>
                     </div>

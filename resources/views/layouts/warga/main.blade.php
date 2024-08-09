@@ -39,4 +39,3 @@
         <script src="../js/datatables-simple-demo.js"></script>
     </body>
 </html>
-

@@ -18,6 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'nik', 'id_kota', 'id_kecamatan', 'jenis_kelamin', 'pekerjaan',
+    //     'status_perkawinan', 'pendapatan_perbulan', 'nama', 'nomer_telfon',
+    //     'tanggal_lahir', 'pendidikan_terakhir', 'alamat_lengkap',
+    //     'tanggungan', 'status_approve', 'password', 'role'
+    // ];
+
     // protected $table = 'buku';
 
     /**
@@ -38,4 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function kecamatan(){
+
+        return $this->hasMany(kecamatan::class,'id_kecamatan');
+    }
+    public function kota(){
+
+        return $this->hasMany(kota::class,'id_kota');
+    }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_kecamatan');
             $table->integer('nik')->unique();
             $table->string('nama');
+            $table->string('jenis_kelamin');
             $table->string('kota_kelahiran');
             $table->date('tanggal_lahir');
             $table->string('pekerjaan');
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->integer('pendapatan_perbulan');
             $table->string('nomer_telfon');
             $table->string('pendidikan_terakhir');
-            $table->integer('tanggungan_anak_keluarga');
+            $table->integer('tanggungan');
             $table->text('alamat_lengkap');
             $table->string('image')->nullable();
             $table->string('password');

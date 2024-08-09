@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-
+use App\Models\keberangkatan;
+use App\Models\kepulangan;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/get-kecamatan-by-kota/{id}', [RegisterController::class, 'getKecamatanByKota']);
+
+
 
 // dashboard warga
 Route::get('/', function () {
@@ -36,7 +41,19 @@ Route::get('/', function () {
 })->middleware('auth');
 
 
-//dashboard admin
+// //dashboard admin
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware('auth');
+
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    $hitungUser = User::where('status_approve', 0)->count();
+    $hitungkeberangkatan = keberangkatan::count();
+    $hitungkepulangan = kepulangan::count();
+    return view('admin.dashboard', [
+        'title' => 'admin',
+        'hitung_user' => $hitungUser,
+        'hitung_keberangkatan' => $hitungkeberangkatan,
+        'hitung_kepulangan' => $hitungkepulangan,
+    ]);
 })->middleware('auth');
