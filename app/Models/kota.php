@@ -15,8 +15,8 @@ class kota extends Model
 
         return $this->hasMany(kecamatan::class,'id_kecamatan');
     }
-    public function users(){
-
-        return $this->belongsTo(User::class);
+    public function users()
+    {
+        return $this->belongsTo(Kota::class,'id_kota');
     }
 }

@@ -18,6 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+    protected $table = 'users';
+
     // protected $fillable = [
     //     'nik', 'id_kota', 'id_kecamatan', 'jenis_kelamin', 'pekerjaan',
     //     'status_perkawinan', 'pendapatan_perbulan', 'nama', 'nomer_telfon',
@@ -47,10 +49,10 @@ class User extends Authenticatable
     ];
     public function kecamatan(){
 
-        return $this->hasMany(kecamatan::class,'id_kecamatan');
+        return $this->belongsTo(kecamatan::class,'id_kecamatan');
     }
     public function kota(){
 
-        return $this->hasMany(kota::class,'id_kota');
+        return $this->belongsTo(kota::class,'id_kota');
     }
 }

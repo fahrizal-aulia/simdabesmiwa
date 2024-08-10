@@ -2,59 +2,54 @@
 
 @section('container')
 
-<div class="container-fluid px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">
-                Welcome back Bapak/Ibu, {{ auth()->user()->nama }}
-        </h1>
-    </div>
-    <h1 class="mt-4">Tables</h1>
+<!-- resources/views/warga/createkepulangan.blade.php -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Data Kepulangan</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Tambah Data Kepulangan</h1>
 
-    <div class="card mb-4">
-        <div class="card-body">
-            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-            .
-        </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            DataTable Example
-        </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <!-- Form untuk menambah data kepulangan -->
+        <form method="POST" action="{">
+            @csrf
 
-                    <tr>
-                        <td>Michael Bruce</td>
-                        <td>Javascript Developer</td>
-                        <td>Singapore</td>
-                        <td>29</td>
-                        <td>2011/06/27</td>
-                        <td>$183,000</td>
-                    </tr>
-                    <tr>
-                        <td>Donna Snider</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>$112,000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <!-- Tanggal Kepulangan -->
+            <div class="form-group">
+                <label for="tanggal_kepulangan">Tanggal Kepulangan:</label>
+                <input type="date" class="form-control" id="tanggal_kepulangan" name="tanggal_kepulangan" required>
+            </div>
+
+            <!-- Status Perkawinan -->
+            <div class="form-group">
+                <label for="status_perkawinan">Status Perkawinan:</label>
+                <select class="form-control" id="status_perkawinan" name="status_perkawinan" required>
+                    <option value="0">Belum Menikah</option>
+                    <option value="1">Sudah Menikah</option>
+                </select>
+            </div>
+
+            <!-- Alasan Kepulangan -->
+            <div class="form-group">
+                <label for="alasan_kepulangan">Alasan Kepulangan:</label>
+                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+            </div>
+
+            <!-- Alamat Kepulangan -->
+            <div class="form-group">
+                <label for="alamat_kepulangan">Alamat Kepulangan:</label>
+                <input type="text" class="form-control" id="alamat_kepulangan" name="alamat_kepulangan" required>
+            </div>
+            <br>
+            <!-- Tombol Simpan -->
+            <div class="form-group d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Simpan Data Kepulangan</button>
+            </div>
+
+        </form>
     </div>
-</div>
+</body>
+</html>
 @endsection

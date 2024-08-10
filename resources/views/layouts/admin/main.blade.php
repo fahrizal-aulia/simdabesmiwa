@@ -10,7 +10,8 @@
         <link rel='icon' type='image/png' href='image/favicon.png'>
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="../css/styles.css" rel="stylesheet" />
+        {{-- <link href="{{ assets }}../css/styles.css" rel="stylesheet" /> --}}
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
    @include('layouts.admin.partials.navbar')
@@ -37,6 +38,12 @@
         <script src="../js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../js/datatables-simple-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+    <script>
+        feather.replace()
+    </script>
     </body>
 </html>
 

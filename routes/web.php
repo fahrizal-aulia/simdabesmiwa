@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\DashboardpendaftaranController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\RegisterController;
 use App\Models\keberangkatan;
 use App\Models\kepulangan;
@@ -42,10 +45,6 @@ Route::get('/', function () {
 
 
 // //dashboard admin
-// Route::get('/dashboard', function () {
-//     return view('admin.dashboard');
-// })->middleware('auth');
-
 Route::get('/dashboard', function () {
     $hitungUser = User::where('status_approve', 0)->count();
     $hitungkeberangkatan = keberangkatan::count();
@@ -57,3 +56,12 @@ Route::get('/dashboard', function () {
         'hitung_kepulangan' => $hitungkepulangan,
     ]);
 })->middleware('auth');
+// Route::get('/dashboard/pendaftar/', [dashboardController::class, 'pendaftar'])->middleware('auth');
+// Route::get('/dashboard/pendaftar/{$user->id}', [DashboardpendaftaranController::class, 'show'])->middleware('auth');
+// Route
+Route::get('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'show'])->middleware('auth');
+Route::get('/dashboard/pendaftar/{user}/edit', [DashboardpendaftaranController::class, 'edit'])->middleware('auth');
+Route::PUT('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'update'])->name('pendaftar.update')->middleware('auth');
+
+Route::resource('/dashboard/pendaftar', DashboardpendaftaranController::class)->middleware('auth');
+

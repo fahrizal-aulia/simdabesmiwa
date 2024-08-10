@@ -1,10 +1,12 @@
 membuat database
 
-membuat login page
-membuat register page
+membuat login page (done)
+membuat register page(done)
+
+gates,multilevel auth
 
 membuat admin:
-dashboard admin
+dashboard admin (done)
 profil
 pendaftar
 datawarga
