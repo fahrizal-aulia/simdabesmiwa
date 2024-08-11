@@ -2,54 +2,44 @@
 
 @section('container')
 
-<!-- resources/views/warga/createkepulangan.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tambah Data Kepulangan</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center">Tambah Data Kepulangan</h1>
-
-        <!-- Form untuk menambah data kepulangan -->
-        <form method="POST" action="{">
-            @csrf
-
-            <!-- Tanggal Kepulangan -->
-            <div class="form-group">
-                <label for="tanggal_kepulangan">Tanggal Kepulangan:</label>
-                <input type="date" class="form-control" id="tanggal_kepulangan" name="tanggal_kepulangan" required>
-            </div>
-
-            <!-- Status Perkawinan -->
-            <div class="form-group">
-                <label for="status_perkawinan">Status Perkawinan:</label>
-                <select class="form-control" id="status_perkawinan" name="status_perkawinan" required>
-                    <option value="0">Belum Menikah</option>
-                    <option value="1">Sudah Menikah</option>
-                </select>
-            </div>
-
-            <!-- Alasan Kepulangan -->
-            <div class="form-group">
-                <label for="alasan_kepulangan">Alasan Kepulangan:</label>
-                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
-            </div>
-
-            <!-- Alamat Kepulangan -->
-            <div class="form-group">
-                <label for="alamat_kepulangan">Alamat Kepulangan:</label>
-                <input type="text" class="form-control" id="alamat_kepulangan" name="alamat_kepulangan" required>
-            </div>
-            <br>
-            <!-- Tombol Simpan -->
-            <div class="form-group d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Simpan Data Kepulangan</button>
-            </div>
-
-        </form>
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h3>Datatable</h3>
+            <p class="text-subtitle text-muted">We use 'simple-datatables' made by @fiduswriter. You can check the full documentation <a href="https://github.com/fiduswriter/Simple-DataTables/wiki">here</a>.</p>
+        </div>
     </div>
-</body>
-</html>
+</div>
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            Simple Datatable
+        </div>
+        <div class="card-body">
+            <table class="table table-striped" id="table1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Graiden</td>
+                        <td>vehicula.aliquet@semconsequat.co.uk</td>
+                        <td>076 4820 8838</td>
+                        <td>Offenburg</td>
+                        <td>
+                            <span class="badge bg-success">Active</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
 @endsection
