@@ -50,7 +50,7 @@ class KeberangkatanController extends Controller
     public function show(keberangkatan $keberangkatan)
     {
         $keberangkatan->tanggal_keberangkatan = Carbon::parse($keberangkatan->tanggal_keberangkatan);
-        return view('admin.keberangkatan.show',[
+        return view('warga.keberangkatan.show',[
             'berangkat'=> $keberangkatan
             ]);
     }
@@ -61,7 +61,7 @@ class KeberangkatanController extends Controller
     public function edit(keberangkatan $keberangkatan)
     {
         $keberangkatan->tanggal_keberangkatan = Carbon::parse($keberangkatan->tanggal_keberangkatan);
-        return view('admin.keberangkatan.edit',[
+        return view('warga.keberangkatan.edit',[
             'berangkat'=> $keberangkatan
             ]);
     }

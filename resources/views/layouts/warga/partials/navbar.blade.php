@@ -7,8 +7,8 @@
             <ul class="menu">
                 <li class="sidebar-title">Main Menu</li>
                 <li class="sidebar-item">
-                    <a href="index.html" class="sidebar-link">
-                        <i data-feather="home" width="20"></i>
+                    <a href="/" class="sidebar-link">
+                        <i data-feather="/" width="20"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -19,8 +19,8 @@
                         <span>Data</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="form-element-input.html">Data Keberangkatan</a></li>
-                        <li><a href="form-element-input-group.html">Data Kepulangan</a></li>
+                        <li><a href="/keberangkatan">Data Keberangkatan</a></li>
+                        <li><a href="/kepulangan">Data Kepulangan</a></li>
                     </ul>
                 </li>
             </ul>
