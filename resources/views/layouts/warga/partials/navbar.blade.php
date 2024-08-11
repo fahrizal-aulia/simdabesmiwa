@@ -43,12 +43,16 @@
                         <div class="avatar mr-1">
                             <img src="assets/images/avatar/avatar-s-1.png" alt="Avatar">
                         </div>
-                        <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+                        <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->nama }}</div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
+                        <a class="dropdown-item" href="/profil"><i data-feather="user"></i> Profil</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i>
+                                Logout</button>
+                        </form>
                     </div>
                 </li>
             </ul>

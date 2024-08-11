@@ -44,7 +44,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 // dashboard warga keberangkatan
-
+Route::resource('/keberangkatan', keberangkatanController::class)->middleware('auth');
 
 
 

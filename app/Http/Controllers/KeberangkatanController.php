@@ -22,7 +22,7 @@ class KeberangkatanController extends Controller
     {
         $keberangkatan = Keberangkatan::with('user')->get();
         // dd($keberangkatan);
-        return view('admin.keberangkatan.index',[
+        return view('warga.keberangkatan.index',[
             'keberangkatan'=> $keberangkatan
 
             ]);
