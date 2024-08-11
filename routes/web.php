@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\DashboardwargaController;
 use App\Http\Controllers\DashboardpendaftaranController;
+use App\Http\Controllers\DashboardkeberangkatanController;
 use App\Http\Controllers\KeberangkatanController;
 
 /*
@@ -24,9 +25,6 @@ use App\Http\Controllers\KeberangkatanController;
 */
 
 
-// Route::get('/', function () {
-//     return view('warga.dashboard');
-// })->middleware('auth');
 
 
 // login
@@ -44,6 +42,11 @@ Route::get('/get-kecamatan-by-kota/{id}', [RegisterController::class, 'getKecama
 Route::get('/', function () {
     return view('warga.dashboard');
 })->middleware('auth');
+
+// dashboard warga keberangkatan
+
+
+
 
 
 //dashboard admin
@@ -67,8 +70,6 @@ Route::resource('/dashboard/pendaftar', DashboardpendaftaranController::class)->
 Route::delete('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'destroy'])->middleware('auth');
 
 // dashboard admin warga
-// Route::get('/dashboard/warga/{user}', [DashboardpendaftaranController::class, 'show'])->middleware('auth');
-// Route::resource('/dashboard/warga', DashboardwargaController::class)->middleware('auth');
 Route::resource('/dashboard/warga', DashboardwargaController::class)->parameters(['warga' => 'user'])->middleware('auth');
-Route::resource('/dashboard/keberangkatan', KeberangkatanController::class)->middleware('auth');
+Route::resource('/dashboard/keberangkatan', DashboardkeberangkatanController::class)->middleware('auth');
 
