@@ -19,7 +19,7 @@ class DashboardpendaftaranController extends Controller
      */
     public function index()
     {
-        $user = user::all();
+        $user = user::where('status_approve', 0)->where('role', 2)->get();
         return View ('admin.pendaftar.index',[
             'users'=> $user
         ]);
@@ -91,6 +91,7 @@ class DashboardpendaftaranController extends Controller
         'pendidikan_terakhir' => 'required|string|max:255',
         'tanggungan' => 'required|numeric',
         'alamat_lengkap' => 'required|string',
+        'status_approve' => 'required',
         'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
 
         ];
@@ -110,63 +111,27 @@ class DashboardpendaftaranController extends Controller
 
         $user->update($validatedData);
 
-        return redirect('/dashboard/pendaftar')->with('success','user Has Been Updated!');
+        return redirect('/dashboard/pendaftar')->with('success','Data Pendaftar Updated!');
     }
-
-// public function update(Request $request, User $user)
-// {
-//     // Rules untuk validasi
-//     $rules = [
-//         'nik' => 'required|',
-//         'nama' => 'required|string|max:255',
-//         'id_kota' => 'required',
-//         'id_kecamatan' => 'required',
-//         'kota_kelahiran' => 'required|string|max:255',
-//         'tanggal_lahir' => 'required|date',
-//         'pekerjaan' => 'required|string|max:255',
-//         'status_perkawinan' => 'required|boolean',
-//         'pendapatan_perbulan' => 'required|numeric',
-//         'nomer_telepon' => 'required|numeric',
-//         'pendidikan_terakhir' => 'required|string|max:255',
-//         'tanggungan_anak' => 'required|numeric',
-//         'alamat_lengkap' => 'required|string',
-//         'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-//     ];
-
-//     // Jika nik berubah, tambahkan validasi unique
-//     if ($request->nik != $user->nik) {
-//         $rules['nik'] = 'required|unique:users,nik';
-//     }
-
-//     // Validasi data
-//     $validatedData = $request->validate($rules);
-
-//     // Jika ada file image baru yang diupload
-//     if ($request->file('image')) {
-//         // Hapus gambar lama jika ada
-//         if ($user->image) {
-//             Storage::disk('public')->delete($user->image);
-//         }
-//         // Simpan gambar baru dan masukkan ke dalam array validatedData
-//         $validatedData['image'] = $request->file('image')->store('images', 'public');
-//     }
-
-//     // Set user ID yang mengupdate data
-//     $validatedData['user_id'] = auth()->user()->id;
-
-//     // Update data pengguna
-//     $user->update($validatedData);
-
-//     return redirect('/dashboard/pendaftar')->with('success', 'Data pendaftar telah berhasil diperbarui!');
-// }
-
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(user $user)
-    {
-        //
+    public function destroy($id)
+{
+    // Log ID yang diterima dari rute
+
+    $user = User::findOrFail($id);
+
+    if ($user->image) {
+        Storage::delete($user->image);
     }
+
+    User::destroy($id);
+
+    return redirect('/dashboard/pendaftar')->with('success', 'Pendaftar Has Been Deleted!');
+}
+
+
 }

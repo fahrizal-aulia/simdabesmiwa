@@ -4,12 +4,12 @@
 
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Detail Pendaftar</h1>
+        <h1 class="h2">Detail Warga</h1>
     </div>
 
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-user me-1"></i> Informasi Pendaftar
+            <i class="fas fa-user me-1"></i> Informasi Warga
         </div>
         <div class="card-body">
             <table class="table">
@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                     <th><strong>Tanggal Lahir:</strong></th>
-                    <td> {{ \Carbon\Carbon::parse($user->tanggal_lahir)->format('d M Y') }}</td>
+                    <td>{{ $user->tanggal_lahir->format('d M Y') }}</td>
                 </tr>
                 <tr>
                     <th><strong>Pekerjaan:</strong></th>
@@ -80,15 +80,14 @@
                 <tr>
                     <th><strong>Status Approve:</strong></th>
                     <td>
-                        <span class="badge bg-{{ $user->status_approve == 0 ? 'danger' : 'success' }}">
-                            {{ $user->status_approve == 0 ? 'Belum Di Approve' : 'Disetujui' }}
+                        <span class="badge bg-{{ $user->status_approve == 1 ? 'danger' : 'success' }}">
+                            {{ $user->status_approve == 1 ? 'Belum Di Approve' : 'Disetujui' }}
                         </span>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="card-footer">
-            <a href="/dashboard/pendaftar/{{ $user->id }}/edit " class="btn btn-warning">edit</a>
             <a href="{{ url()->previous() }}" class="btn btn-secondary">Kembali</a>
         </div>
     </div>

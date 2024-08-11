@@ -13,10 +13,10 @@ class kota extends Model
 
     public function kecamatan(){
 
-        return $this->hasMany(kecamatan::class,'id_kecamatan');
+        return $this->hasMany(kecamatan::class);
     }
     public function users()
     {
-        return $this->belongsTo(Kota::class,'id_kota');
+        return $this->belongsTo(User::class);
     }
 }

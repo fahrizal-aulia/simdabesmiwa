@@ -7,10 +7,10 @@ gates,multilevel auth
 
 membuat admin:
 dashboard admin (done)
-profil
-pendaftar
-datawarga
-Data keberangkatan
+profil(opsional)
+pendaftar(done)
+datawarga(done)
+Data keberangkatan (preogress)
 Data kepulangan(amndan)
 
 

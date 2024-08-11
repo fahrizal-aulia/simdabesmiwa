@@ -9,5 +9,14 @@ class keberangkatan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $table = 'kecamatan';
+    protected $table = 'keberangkatan';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+    public function kepulangan()
+    {
+        return $this->hasMany(Kepulangan::class, 'id_keberangkatan');
+    }
 }

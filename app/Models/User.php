@@ -55,4 +55,16 @@ class User extends Authenticatable
 
         return $this->belongsTo(kota::class,'id_kota');
     }
+    public function keberangkatans()
+{
+    return $this->hasMany(Keberangkatan::class, 'id_user');
+}
+    public function kepulangan(){
+
+        return $this->hasMany(kepulangan::class);
+    }
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }

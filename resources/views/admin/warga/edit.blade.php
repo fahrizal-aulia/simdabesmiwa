@@ -4,15 +4,15 @@
 
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Edit Data Pendaftar</h1>
+        <h1 class="h2">Edit Data Warga</h1>
     </div>
 
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-edit me-1"></i> Form Edit Pendaftar
+            <i class="fas fa-edit me-1"></i> Form Edit Warga
         </div>
         <div class="card-body">
-            <form action="/dashboard/pendaftar/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/dashboard/warga/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -178,8 +178,8 @@
 
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Update dan Approve</button>
-                    <a href="/dashboard/pendaftar " class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="/dashboard/warga " class="btn btn-secondary">Cancel</a>
                 </div>
             </form>
         </div>
