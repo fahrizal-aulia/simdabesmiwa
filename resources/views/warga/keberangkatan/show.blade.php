@@ -111,7 +111,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        <a href="/dashboard/keberangkatan/{{ $berangkat->id }}/edit " class="btn btn-warning">edit</a>
+                        <a href="/keberangkatan/{{ $berangkat->id }}/edit " class="btn btn-warning">edit</a>
                         <a href="{{ url()->previous() }}" class="btn btn-secondary">Kembali</a>
                     </div>
                 </div>

@@ -10,11 +10,11 @@ dashboard admin (done)
 profil(opsional)
 pendaftar(done)
 datawarga(done)
-Data keberangkatan (preogress)
+Data keberangkatan (done)
 Data kepulangan(amndan)
 
 
 Warga:
 Profil (my account)(amndan)
-Data keberangkatan
+Data keberangkatan (done)
 data Kepulangan(amndan)

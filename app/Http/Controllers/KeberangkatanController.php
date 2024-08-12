@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\keberangkatan;
+use App\Models\User;
 use App\Http\Requests\StorekeberangkatanRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -33,15 +34,38 @@ class KeberangkatanController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::find( auth()->user()->id);
+        return view('warga.keberangkatan.create', [
+            'users' => $users,
+        ]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorekeberangkatanRequest $request)
+    public function store(Request $request)
     {
-        //
+        // ddd($request->all());
+        $validatedData= $request-> validate([
+            'nama_perusahaan' => 'required|string|max:255',
+            'negara_tujuan' => 'required|string|max:255',
+            'tanggal_keberangkatan' => 'required|date',
+            'jenis_pekerjaan' => 'required|string|max:255',
+            'alamat_di_luar_negeri' => 'required|string',
+            'status_perkawinan' => 'required|boolean',
+            'biaya_pemberangkatan' => 'required|numeric',
+            'masa_kontrak' => 'required|integer',
+            'gaji_perbulan' => 'required|numeric',
+            'asuransi' => 'required|string',
+        ]);
+
+        $validatedData['id_user']=auth()->user()->id;
+
+        keberangkatan::create($validatedData);
+
+        return redirect('/keberangkatan')->with('success','Keberangkatan sHas Been Added!');
+
     }
 
     /**
@@ -73,6 +97,7 @@ class KeberangkatanController extends Controller
 {
     // Mendefinisikan aturan validasi
     $rules = [
+        'NIK'=> 'required',
         'nama_perusahaan' => 'required|string|max:255',
         'negara_tujuan' => 'required|string|max:255',
         'tanggal_keberangkatan' => 'required|date',
@@ -87,34 +112,18 @@ class KeberangkatanController extends Controller
         'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
     ];
 
-    // Validasi data request
     $validatedData = $request->validate($rules);
 
-    // Debugging: Cek data yang tervalidasi
-    Log::info('Validated Data:', $validatedData);
 
-    // Proses upload gambar jika ada
     if ($request->hasFile('image')) {
-        // Hapus gambar lama jika ada
         if ($keberangkatan->image && Storage::exists($keberangkatan->image)) {
             Storage::delete($keberangkatan->image);
         }
-        // Simpan gambar baru
         $validatedData['image'] = $request->file('image')->store('user-image');
     }
 
-    // Debugging: Cek data sebelum update
-    Log::info('User Data Before Update:', $keberangkatan->toArray());
-    Log::info('Data to Update:', $validatedData);
-
-    // Update data pengguna
     $keberangkatan->update($validatedData);
-
-    // Debugging: Cek data setelah update
-    Log::info('User Data After Update:', $keberangkatan->fresh()->toArray());
-
-    // Redirect dengan pesan sukses
-    return redirect('/dashboard/keberangkatan')->with('success', 'Data keberangkatan Updated!');
+    return redirect('/keberangkatan')->with('success', 'Data keberangkatan Updated!');
 }
 
 
@@ -128,7 +137,7 @@ class KeberangkatanController extends Controller
 
         if ($hasKepulangan) {
             // Jika ada data terkait, kembalikan dengan pesan error
-            return redirect('/dashboard/keberangkatan')
+            return redirect('/keberangkatan')
                 ->with('error', 'Tidak dapat menghapus keberangkatan karena ada data kepulangan yang terkait. Hapus data kepulangan terlebih dahulu.');
         }
         if($keberangkatan->image){
@@ -136,6 +145,6 @@ class KeberangkatanController extends Controller
         }
         keberangkatan::destroy($keberangkatan->id);
 
-        return redirect('/dashboard/warga')->with('success','warga Has Been Deleted!');
+        return redirect('/keberangkatan')->with('success','Keberangkatan Deleted!');
     }
 }

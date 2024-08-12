@@ -9,10 +9,27 @@
         </div>
     </div>
 </div>
+
 <section class="section">
     <div class="card">
-        <div class="card-header">
-            Simple Datatable
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-lg-10 mt-3 ml-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show col-lg-10 mt-3 ml-3" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Simple Datatable</span>
+            <a href="/keberangkatan/create" class="btn btn-primary">
+                <span data-feather="plus"></span> Tambah Keberangkatan
+            </a>
         </div>
         <div class="card-body">
             <table class="table table-striped" id="table1">
@@ -49,7 +66,6 @@
                                 </button>
                             </form>
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>
