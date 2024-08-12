@@ -5,20 +5,30 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Datatable Kepulangan</h3>
+            <h3>Data Kepulangan</h3>
         </div>
     </div>
 </div>
 <section class="section">
     <div class="card">
-        <div class="card-header">
-            Simple Datatable Kepulangan
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-lg-10 mt-3 ml-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <div class="container mt-5">
-        <h2 class="text-center">Data Kepulangan</h2>
-        <div class="text-right mb-3">
-            <a href="{{ route('kepulangan.create') }}" class="btn btn-primary">Tambah Data Kepulangan</a>
-          
+        @endif
+
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show col-lg-10 mt-3 ml-3" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Info Kepulangan</span>
+            <a href="{{ route('kepulangan.create') }}" class="btn btn-primary">
+                <span data-feather="plus"></span> Tambah Data Kepulangan
+            </a>
         </div>
         <div class="card-body">
             <table class="table table-striped" id="table1">
@@ -30,8 +40,8 @@
                         <th>Alasan Kepulangan</th>
                         <th>Alamat Kepulangan</th>
                         <th>Tanggal Kepulangan</th>
-                        <th>Status Perkawinan</th>
-                        <th>Status Approve</th>
+                        {{-- <th>Status Perkawinan</th> --}}
+                        {{-- <th>Status Approve</th> --}}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -44,8 +54,8 @@
                         <td>{{ $pulang->alasan_kepulangan }}</td>
                         <td>{{ $pulang->alamat_kepulangan }}</td>
                         <td>{{ \Carbon\Carbon::parse($pulang->tanggal_kepulangan)->format('d M Y') }}</td>
-                        <td>{{ $pulang->status_perkawinan ? 'Menikah' : 'Belum Menikah' }}</td>
-                        <td>{{ $pulang->status_approve ? 'Disetujui' : 'Belum Disetujui' }}</td>
+                        {{-- <td>{{ $pulang->status_perkawinan ? 'Menikah' : 'Belum Menikah' }}</td> --}}
+                        {{-- <td>{{ $pulang->status_approve ? 'Disetujui' : 'Belum Disetujui' }}</td> --}}
                         <td>
                             <a href="/kepulangan/{{ $pulang->id }}" class="badge bg-info">
                                 <i data-feather="eye"></i>

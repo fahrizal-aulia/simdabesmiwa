@@ -5,7 +5,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Datatable</h3>
+            <h3>Data Keberangkatan</h3>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
             </div>
         @endif
         <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Simple Datatable</span>
+            <span>Info Keberangkatan</span>
             <a href="/keberangkatan/create" class="btn btn-primary">
                 <span data-feather="plus"></span> Tambah Keberangkatan
             </a>
@@ -74,13 +74,4 @@
     </div>
 </section>
 
-<<<<<<< Updated upstream
-=======
-{{-- Tambahkan script Feather Icons di bagian bawah --}}
-<script src="https://unpkg.com/feather-icons"></script>
-<script>
-    feather.replace(); // Mengganti placeholder icon dengan SVG Feather Icons
-</script>
-
->>>>>>> Stashed changes
 @endsection

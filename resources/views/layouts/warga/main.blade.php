@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datatable - Voler Admin Dashboard</title>
+    <title>SIMDABESMIWA</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/simple-datatables/style.css') }}">
@@ -35,7 +35,7 @@
     <script src="{{ asset('../assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('../assets/js/vendors.js') }}"></script>
     <script src="{{ asset('../assets/js/main.js') }}"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="{{ asset('../js/feather.js') }}"></script>
 </body>
 
 </html>

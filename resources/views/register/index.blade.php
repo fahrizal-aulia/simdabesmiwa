@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Pendaftaran</title>
     <link rel='icon' type='image/png' href='image/favicon.png'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            background-color: #f0f2f5;
+            background-color: #f5f7fa;
             display: flex;
             justify-content: center;
         }
         .container {
             width: 90%;
-            max-width: 1200px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 20px;
+            max-width: 900px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             box-sizing: border-box;
             margin-top: 20px;
         }
@@ -34,7 +35,7 @@
             justify-content: center;
             flex-wrap: wrap;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .header-section div {
             flex: 1;
@@ -51,7 +52,7 @@
         .header-section img {
             width: 80px;
             margin: 0 10px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease-in-out;
         }
         .header-section img:hover {
             transform: scale(1.1);
@@ -67,34 +68,39 @@
         }
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: #333;
+            font-weight: 700;
         }
         .form-group input, .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
             box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .form-group input:focus, .form-group select:focus {
             border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
             outline: none;
         }
         .btn {
             display: inline-block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             background-color: #007bff;
-            color: #fff;
+            color: #ffffff;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .btn:hover {
             background-color: #0056b3;
+            transform: scale(1.02);
         }
         .login-link {
             text-align: center;
@@ -103,10 +109,37 @@
         .login-link a {
             color: #007bff;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
         }
         .login-link a:hover {
             text-decoration: underline;
+        }
+        .alert {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .alert-success {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        .alert-danger {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+        .btn-close {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .btn-close:hover {
+            color: #e0e0e0;
         }
         @media (max-width: 768px) {
             .form-column {
@@ -129,27 +162,29 @@
     <div class="container">
         @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success')}}
+            {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
         </div>
         @endif
 
         @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error')}}
+            {{ session('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
         </div>
         @endif
 
         <div class="header-section">
+
+            <div>
+                <img src="{{ asset('image/kemendikbud.png') }}" alt="Logo 2">
+            </div>
             <div>
                 <h2>Daftar Akun Baru</h2>
                 <p>Silakan isi data di bawah ini untuk mendaftar.</p>
             </div>
             <div>
-                <img src="logo1.png" alt="Logo 1">
-                <img src="logo2.png" alt="Logo 2">
-                <img src="logo3.png" alt="Logo 3">
+                <img src="{{ asset('image/uwp.png') }}" alt="Logo 1">
             </div>
         </div>
 
@@ -176,7 +211,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="nama" required value="{{ old('nama') }}">
+                    <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama Lengkap" required value="{{ old('nama') }}">
                     @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -197,8 +232,6 @@
                     </div>
                     @enderror
                 </div>
-
-
                 <div class="form-group">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
                     <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror" required>
@@ -212,11 +245,10 @@
                     </div>
                     @enderror
                 </div>
-
                 <div class="form-group">
-                    <label for="id_kecamatan">kecamatan</label>
+                    <label for="id_kecamatan">Kecamatan</label>
                     <select class="form-control @error('id_kecamatan') is-invalid @enderror" name="id_kecamatan" id="id_kecamatan" required>
-                        <option value="">Pilih id_kecamatan</option>
+                        <option value="">Pilih Kecamatan</option>
                     </select>
                     @error('id_kecamatan')
                     <div class="invalid-feedback">
@@ -237,7 +269,6 @@
                     </div>
                     @enderror
                 </div>
-
                 <div class="form-group">
                     <label for="pendapatan_perbulan">Pendapatan Perbulan</label>
                     <input type="number" name="pendapatan_perbulan" class="form-control @error('pendapatan_perbulan') is-invalid @enderror" id="pendapatan_perbulan" placeholder="Pendapatan Perbulan" required value="{{ old('pendapatan_perbulan') }}">
@@ -325,7 +356,6 @@
                 <div class="form-group">
                     <input type="hidden" name="role" required value="2">
                 </div>
-
             </div>
             <button type="submit" class="btn">Daftar</button>
             <div class="login-link">
@@ -361,15 +391,6 @@
                 }
             });
         });
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        var password = document.getElementById('password').value;
-        var confirmPassword = document.getElementById('confirm_password').value;
-
-        if (password !== confirmPassword) {
-            event.preventDefault(); // Mencegah form dikirim
-            alert('Password dan konfirmasi password harus sama.');
-        }
-    });
     </script>
 </body>
 </html>

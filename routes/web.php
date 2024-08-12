@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 // use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PendaftarController;
+// use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\KepulanganController;
 use App\Http\Controllers\KeberangkatanController;
 use App\Http\Controllers\DashboardwargaController;
@@ -43,42 +43,43 @@ Route::get('/get-kecamatan-by-kota/{id}', [RegisterController::class, 'getKecama
 
 
 // dashboard warga
-Route::get('/', function () {
-    return view('warga.dashboard');
-})->middleware('auth');
+Route::middleware(['auth', 'check.role:1'])->group(function () {
+    Route::get('/', function () {
+        return view('warga.dashboard');
+    });
+    // dashboard warga keberangkatan
+    Route::resource('/keberangkatan', keberangkatanController::class);
+    Route::resource('/kepulangan', KepulanganController::class);
+    // Rute untuk menampilkan dan mengupdate profil
+    Route::match(['get', 'post'], '/profile', [ProfileController::class, 'edit'])->name('profile');
+});
 
-// dashboard warga keberangkatan
-Route::resource('/keberangkatan', keberangkatanController::class)->middleware('auth');
 
+Route::middleware(['auth', 'check.role:2'])->group(function () {
 
+    //dashboard admin
+    Route::get('/dashboard', function () {
+        $hitungUser = User::where('status_approve', 0)->count();
+        $hitungkeberangkatan = keberangkatan::count();
+        $hitungkepulangan = kepulangan::count();
+        return view('admin.dashboard', [
+            'title' => 'admin',
+            'hitung_user' => $hitungUser,
+            'hitung_keberangkatan' => $hitungkeberangkatan,
+            'hitung_kepulangan' => $hitungkepulangan,
+        ]);
+    })->middleware('auth');
 
+    // dashboard admin pendaftar
+    Route::get('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'show'])->middleware('auth');
+    Route::get('/dashboard/pendaftar/{user}/edit', [DashboardpendaftaranController::class, 'edit'])->middleware('auth');
+    Route::PUT('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'update'])->name('pendaftar.update')->middleware('auth');
+    Route::resource('/dashboard/pendaftar', DashboardpendaftaranController::class)->middleware('auth');
+    Route::delete('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'destroy'])->middleware('auth');
 
-//dashboard admin
-Route::get('/dashboard', function () {
-    $hitungUser = User::where('status_approve', 0)->count();
-    $hitungkeberangkatan = keberangkatan::count();
-    $hitungkepulangan = kepulangan::count();
-    return view('admin.dashboard', [
-        'title' => 'admin',
-        'hitung_user' => $hitungUser,
-        'hitung_keberangkatan' => $hitungkeberangkatan,
-        'hitung_kepulangan' => $hitungkepulangan,
-    ]);
-})->middleware('auth');
+    // dashboard admin warga
+    Route::resource('/dashboard/warga', DashboardwargaController::class)->parameters(['warga' => 'user'])->middleware('auth');
+    Route::resource('/dashboard/keberangkatan', DashboardkeberangkatanController::class)->middleware('auth');
+    Route::resource('/dashboard/kepulangan', DashboardKepulanganController::class)->middleware('auth');
 
-// dashboard admin pendaftar
-Route::get('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'show'])->middleware('auth');
-Route::get('/dashboard/pendaftar/{user}/edit', [DashboardpendaftaranController::class, 'edit'])->middleware('auth');
-Route::PUT('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'update'])->name('pendaftar.update')->middleware('auth');
-Route::resource('/dashboard/pendaftar', DashboardpendaftaranController::class)->middleware('auth');
-Route::delete('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'destroy'])->middleware('auth');
-
-// dashboard admin warga
-Route::resource('/dashboard/warga', DashboardwargaController::class)->parameters(['warga' => 'user'])->middleware('auth');
-Route::resource('/dashboard/keberangkatan', DashboardkeberangkatanController::class)->middleware('auth');
-Route::resource('/dashboard/kepulangan', DashboardKepulanganController::class)->middleware('auth');
-Route::resource('kepulangan', KepulanganController::class)->middleware('auth');;
-
-// Rute untuk menampilkan dan mengupdate profil
-Route::match(['get', 'post'], '/profile', [ProfileController::class, 'edit'])->middleware('auth')->name('profile');
-
+});
