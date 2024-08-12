@@ -53,16 +53,16 @@
                         <td>{{ \Carbon\Carbon::parse($berangkat->tanggal_keberangkatan)->format('d M Y') }}</td>
                         <td>
                             <a href="/keberangkatan/{{ $berangkat->id }}" class="badge bg-info">
-                                <span data-feather="eye"></span>
+                                <i data-feather="eye"></i>
                             </a>
                             <a href="/keberangkatan/{{ $berangkat->id }}/edit" class="badge bg-warning">
-                                <span data-feather="edit"></span>
+                                <i data-feather="edit"></i>
                             </a>
                             <form action="/keberangkatan/{{ $berangkat->id }}" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0" onclick="return confirm('Yakin Menghapus data ini?!!')">
-                                    <span data-feather="x-circle"></span>
+                                    <i data-feather="x-circle"></i>
                                 </button>
                             </form>
                         </td>
@@ -74,4 +74,13 @@
     </div>
 </section>
 
+<<<<<<< Updated upstream
+=======
+{{-- Tambahkan script Feather Icons di bagian bawah --}}
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace(); // Mengganti placeholder icon dengan SVG Feather Icons
+</script>
+
+>>>>>>> Stashed changes
 @endsection

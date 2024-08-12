@@ -35,7 +35,7 @@
     <script src="{{ asset('../assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('../assets/js/vendors.js') }}"></script>
     <script src="{{ asset('../assets/js/main.js') }}"></script>
-    <
+    <script src="https://unpkg.com/feather-icons"></script>
 </body>
 
 </html>

@@ -5,13 +5,17 @@ use App\Models\kepulangan;
 use App\Models\keberangkatan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfileController;
 // use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\KepulanganController;
+use App\Http\Controllers\KeberangkatanController;
 use App\Http\Controllers\DashboardwargaController;
+use App\Http\Controllers\DashboardKepulanganController;
 use App\Http\Controllers\DashboardpendaftaranController;
 use App\Http\Controllers\DashboardkeberangkatanController;
-use App\Http\Controllers\KeberangkatanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,4 +76,9 @@ Route::delete('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::cl
 // dashboard admin warga
 Route::resource('/dashboard/warga', DashboardwargaController::class)->parameters(['warga' => 'user'])->middleware('auth');
 Route::resource('/dashboard/keberangkatan', DashboardkeberangkatanController::class)->middleware('auth');
+Route::resource('/dashboard/kepulangan', DashboardKepulanganController::class)->middleware('auth');
+Route::resource('kepulangan', KepulanganController::class)->middleware('auth');;
+
+// Rute untuk menampilkan dan mengupdate profil
+Route::match(['get', 'post'], '/profile', [ProfileController::class, 'edit'])->middleware('auth')->name('profile');
 

@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 
 
-use Carbon\Carbon;
 use App\Models\Kepulangan;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorekepulanganRequest;
 use App\Http\Requests\UpdatekepulanganRequest;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
-class KepulanganController extends Controller
+class DashboardKepulanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +26,7 @@ class KepulanganController extends Controller
         Log::info('Kepulangan Data:', $kepulangan->toArray());
 
         // Mengirim data ke view
-        return view('warga.kepulangan.index', [
+        return view('admin.kepulangan.index', [
             'kepulangan' => $kepulangan
         ]);
     }
@@ -38,46 +37,37 @@ class KepulanganController extends Controller
     public function create()
     {
         // Menampilkan form pembuatan baru jika diperlukan
-        return view('warga.kepulangan.create');
+        return view('admin.kepulangan.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(request $request)
+    public function store(StorekepulanganRequest $request)
     {
-        $request->validate([
-            'tanggal_kepulangan' => 'required|date',
-            'status_perkawinan' => 'required|boolean',
-            'alasan_kepulangan' => 'required|string|max:255',
-            'alamat_kepulangan' => 'required|string|max:255',
-        ]);
+        // Mendefinisikan aturan validasi
+        $validatedData = $request->validated();
 
-        Kepulangan::create([
-            'id_user' => Auth::id(),
-            'id_keberangkatan' => 1, // Atur ini sesuai kebutuhan
-            'tanggal_kepulangan' => $request->tanggal_kepulangan,
-            'status_perkawinan' => $request->status_perkawinan,
-            'alasan_kepulangan' => $request->alasan_kepulangan,
-            'alamat_kepulangan' => $request->alamat_kepulangan,
-            'status_approve' => false,
-        ]);
+        // Debugging: Cek data yang tervalidasi
+        Log::info('Validated Data:', $validatedData);
 
-        return redirect('/kepulangan')->with('success', 'Data kepulangan berhasil ditambahkan.');
+        // Menyimpan data baru
+        Kepulangan::create($validatedData);
+
+        // Redirect dengan pesan sukses
+        return redirect('/dashboard/kepulangan')->with('success', 'Data kepulangan telah ditambahkan!');
     }
 
-    
     /**
      * Display the specified resource.
      */
     public function show(Kepulangan $kepulangan)
     {
-        
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
 
         // Mengirim data ke view
-        return view('warga.kepulangan.show', [
+        return view('admin.kepulangan.show', [
             'pulang' => $kepulangan
         ]);
     }
@@ -91,7 +81,7 @@ class KepulanganController extends Controller
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
 
         // Mengirim data ke view
-        return view('warga.kepulangan.edit', [
+        return view('admin.kepulangan.edit', [
             'pulang' => $kepulangan
         ]);
     }
@@ -134,7 +124,7 @@ class KepulanganController extends Controller
         Log::info('Kepulangan Data After Update:', $kepulangan->fresh()->toArray());
 
         // Redirect dengan pesan sukses
-        return redirect('/kepulangan')->with('success', 'Data kepulangan telah diperbarui!');
+        return redirect('/dashboard/kepulangan')->with('success', 'Data kepulangan telah diperbarui!');
     }
 
     /**
@@ -151,6 +141,6 @@ class KepulanganController extends Controller
         $kepulangan->delete();
 
         // Redirect dengan pesan sukses
-        return redirect('/kepulangan')->with('success', 'Data kepulangan telah dihapus!');
+        return redirect('/dashboard/admin')->with('success', 'Data kepulangan telah dihapus!');
     }
 }

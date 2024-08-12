@@ -46,7 +46,7 @@
                         <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->nama }}</div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="/profil"><i data-feather="user"></i> Profil</a>
+                        <a class="dropdown-item" href="/profile"><i data-feather="user"></i> Profil</a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf
