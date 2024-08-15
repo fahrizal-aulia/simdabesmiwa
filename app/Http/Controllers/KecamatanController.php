@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kecamatan;
-use App\Http\Requests\StorekecamatanRequest;
+use App\Http\Requests\StorekecamatanRequest;
 use App\Http\Requests\UpdatekecamatanRequest;
 
 class KecamatanController extends Controller

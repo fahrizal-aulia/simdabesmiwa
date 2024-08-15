@@ -61,7 +61,7 @@ class User extends Authenticatable
 }
     public function kepulangan(){
 
-        return $this->hasMany(kepulangan::class);
+        return $this->hasMany(kepulangan::class,'id_kepulangan');
     }
     public function getRouteKeyName()
     {

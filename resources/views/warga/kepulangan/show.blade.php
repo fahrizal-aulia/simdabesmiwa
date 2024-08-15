@@ -21,13 +21,13 @@
                     <th><strong>Nama:</strong></th>
                     <td>{{ $pulang->user->nama }}</td>
                 </tr>
-        
+
                 <tr>
                     <th><strong>Tanggal Keberangkatan:</strong></th>
                     <td>{{ $pulang->tanggal_kepulangan->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
                 </tr>
-                
-               
+
+
                 <tr>
                     <th><strong>Status Perkawinan:</strong></th>
                     <td>

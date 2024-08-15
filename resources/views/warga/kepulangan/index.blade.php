@@ -26,7 +26,7 @@
         @endif
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Info Kepulangan</span>
-            <a href="{{ route('kepulangan.create') }}" class="btn btn-primary">
+            <a href="/kepulangan/create" class="btn btn-primary">
                 <span data-feather="plus"></span> Tambah Data Kepulangan
             </a>
         </div>

@@ -12,7 +12,7 @@
         <h1 class="text-center">Tambah Data Kepulangan</h1>
 
         <!-- Form untuk menambah data kepulangan -->
-        <form method="POST" action="{{ route('kepulangan.store') }}">
+        <form method="POST" action="/kepulangan">
             @csrf
 
             <!-- Tanggal Kepulangan -->

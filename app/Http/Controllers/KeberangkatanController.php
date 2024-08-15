@@ -21,7 +21,7 @@ class KeberangkatanController extends Controller
      */
     public function index()
     {
-        $keberangkatan = Keberangkatan::with('user')->get();
+        $keberangkatan = Keberangkatan::with('user')->where('id_user',auth()->user()->id)->get();
         // dd($keberangkatan);
         return view('warga.keberangkatan.index',[
             'keberangkatan'=> $keberangkatan
@@ -64,7 +64,7 @@ class KeberangkatanController extends Controller
 
         keberangkatan::create($validatedData);
 
-        return redirect('/keberangkatan')->with('success','Keberangkatan sHas Been Added!');
+        return redirect('/keberangkatan')->with('success','Keberangkatan Has Been Added!');
 
     }
 

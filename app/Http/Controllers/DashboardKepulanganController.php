@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 
-use App\Models\Kepulangan;
+use App\Models\kepulangan;
 use App\Http\Requests\StorekepulanganRequest;
 use App\Http\Requests\UpdatekepulanganRequest;
 use Carbon\Carbon;
@@ -20,7 +20,7 @@ class DashboardKepulanganController extends Controller
     public function index()
     {
         // Mengambil semua data dari tabel kepulangan
-        $kepulangan = Kepulangan::with('user')->get();
+        $kepulangan = kepulangan::with('user')->get();
 
         // Debugging: Cek data yang diambil
         Log::info('Kepulangan Data:', $kepulangan->toArray());
@@ -52,7 +52,7 @@ class DashboardKepulanganController extends Controller
         Log::info('Validated Data:', $validatedData);
 
         // Menyimpan data baru
-        Kepulangan::create($validatedData);
+        kepulangan::create($validatedData);
 
         // Redirect dengan pesan sukses
         return redirect('/dashboard/kepulangan')->with('success', 'Data kepulangan telah ditambahkan!');
@@ -61,7 +61,7 @@ class DashboardKepulanganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kepulangan $kepulangan)
+    public function show(kepulangan $kepulangan)
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
@@ -75,7 +75,7 @@ class DashboardKepulanganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kepulangan $kepulangan)
+    public function edit(kepulangan $kepulangan)
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
@@ -89,7 +89,7 @@ class DashboardKepulanganController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(request $request, Kepulangan $kepulangan)
+    public function update(request $request, kepulangan $kepulangan)
     {
         // Mendefinisikan aturan validasi
         $rules = [
@@ -130,7 +130,7 @@ class DashboardKepulanganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kepulangan $kepulangan)
+    public function destroy(kepulangan $kepulangan)
     {
         // Hapus gambar jika ada
         if ($kepulangan->image) {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 
 use Carbon\Carbon;
-use App\Models\Kepulangan;
+use App\Models\kepulangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -19,12 +19,13 @@ class KepulanganController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    { 
+        // @dd('hai');
         // Mengambil semua data dari tabel kepulangan
-        $kepulangan = Kepulangan::with('user')->get();
+        $kepulangan = kepulangan::with('user')->where('id_user',auth()->user()->id)->get();
 
         // Debugging: Cek data yang diambil
-        Log::info('Kepulangan Data:', $kepulangan->toArray());
+        // Log::info('Kepulangan Data:', $kepulangan->toArray());
 
         // Mengirim data ke view
         return view('warga.kepulangan.index', [
@@ -46,15 +47,15 @@ class KepulanganController extends Controller
      */
     public function store(request $request)
     {
-        $request->validate([
+        $validatedData= $request->validate([
             'tanggal_kepulangan' => 'required|date',
             'status_perkawinan' => 'required|boolean',
             'alasan_kepulangan' => 'required|string|max:255',
             'alamat_kepulangan' => 'required|string|max:255',
         ]);
 
-        Kepulangan::create([
-            'id_user' => Auth::id(),
+        kepulangan::create([
+            'id_user' => auth()->user()->id,
             'id_keberangkatan' => 1, // Atur ini sesuai kebutuhan
             'tanggal_kepulangan' => $request->tanggal_kepulangan,
             'status_perkawinan' => $request->status_perkawinan,
@@ -62,7 +63,6 @@ class KepulanganController extends Controller
             'alamat_kepulangan' => $request->alamat_kepulangan,
             'status_approve' => false,
         ]);
-
         return redirect('/kepulangan')->with('success', 'Data kepulangan berhasil ditambahkan.');
     }
 
@@ -70,7 +70,7 @@ class KepulanganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kepulangan $kepulangan)
+    public function show(kepulangan $kepulangan)
     {
         
         // Format tanggal kepulangan
@@ -85,7 +85,7 @@ class KepulanganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kepulangan $kepulangan)
+    public function edit(kepulangan $kepulangan)
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
@@ -140,7 +140,7 @@ class KepulanganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kepulangan $kepulangan)
+    public function destroy(kepulangan $kepulangan)
     {
         // Hapus gambar jika ada
         if ($kepulangan->image) {

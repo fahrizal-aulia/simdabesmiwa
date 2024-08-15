@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kota;
-use App\Http\Requests\StorekotaRequest;
+use App\Http\Requests\StorekotaRequest;
 use App\Http\Requests\UpdatekotaRequest;
 
 class KotaController extends Controller

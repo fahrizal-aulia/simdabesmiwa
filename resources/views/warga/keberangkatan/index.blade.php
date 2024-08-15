@@ -74,4 +74,9 @@
     </div>
 </section>
 
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace(); // Mengganti placeholder icon dengan SVG Feather Icons
+</script>
+
 @endsection
