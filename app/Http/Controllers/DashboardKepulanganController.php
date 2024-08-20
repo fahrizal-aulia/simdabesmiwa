@@ -19,9 +19,14 @@ class DashboardKepulanganController extends Controller
      */
     public function index()
     {
-        // Mengambil semua data dari tabel kepulangan
-        $kepulangan = kepulangan::with('user')->get();
+        $idKota = auth()->user()->id_kota;
 
+
+        // Mengambil semua data dari tabel kepulangan
+        $kepulangan = kepulangan::join('users', 'kepulangan.id_user', '=', 'users.id')
+        ->where('users.id_kota', $idKota)
+        ->select('kepulangan.*')
+        ->get();
         // Debugging: Cek data yang diambil
         Log::info('Kepulangan Data:', $kepulangan->toArray());
 

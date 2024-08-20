@@ -180,8 +180,8 @@
                 <img src="{{ asset('image/kemendikbud.png') }}" alt="Logo 2">
             </div>
             <div>
-                <h2>Daftar Akun Baru</h2>
-                <p>Silakan isi data di bawah ini untuk mendaftar.</p>
+                <h2>Sistem Pendaftaran PMI</h2>
+                <p>Pekerja Migran Indonesia.</p>
             </div>
             <div>
                 <img src="{{ asset('image/uwp.png') }}" alt="Logo 1">

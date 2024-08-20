@@ -19,7 +19,7 @@ class DashboardpendaftaranController extends Controller
      */
     public function index()
     {
-        $user = user::where('status_approve', 0)->where('role', 2)->get();
+        $user = user::where('status_approve', 0)->where('role', 2)->where('id_kota',auth()->user()->id_kota)->get();
         return View ('admin.pendaftar.index',[
             'users'=> $user
         ]);

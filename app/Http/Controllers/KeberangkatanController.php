@@ -97,7 +97,7 @@ class KeberangkatanController extends Controller
 {
     // Mendefinisikan aturan validasi
     $rules = [
-        'NIK'=> 'required',
+        // 'NIK'=> 'required',
         'nama_perusahaan' => 'required|string|max:255',
         'negara_tujuan' => 'required|string|max:255',
         'tanggal_keberangkatan' => 'required|date',

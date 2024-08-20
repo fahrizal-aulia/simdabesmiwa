@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kepulangan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')->constrained('users');
-            $table->foreignId('id_keberangkatan')->constrained('keberangkatan');
+            $table->foreignId('id_keberangkatan');
             $table->date('tanggal_kepulangan');
             $table->boolean('status_perkawinan')->default(false);
             $table->text('alasan_kepulangan');

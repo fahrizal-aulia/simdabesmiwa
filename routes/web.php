@@ -38,14 +38,20 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/confirmation', [RegisterController::class, 'confirmation'])->middleware('guest');
 Route::get('/get-kecamatan-by-kota/{id}', [RegisterController::class, 'getKecamatanByKota']);
+
 
 
 
 // dashboard warga
 Route::middleware(['auth', 'check.role:1'])->group(function () {
     Route::get('/', function () {
-        return view('warga.dashboard');
+        $user = User::find(auth()->user()->id);
+        return view('warga.dashboard', [
+            'title' => 'admin',
+            'user' => $user,
+        ]);
     });
     // dashboard warga keberangkatan
     Route::resource('/keberangkatan', keberangkatanController::class);

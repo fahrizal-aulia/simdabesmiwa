@@ -59,11 +59,15 @@ class RegisterController extends Controller
         try {
             User::create($validatedData);
             Log::info('User created successfully.');
-            return redirect('/login')->with('success', 'Registration successful! Please Login.');
+            return redirect('/confirmation')->with('success', 'Registration successful! Please Login.');
         } catch (\Exception $e) {
             Log::error('Error creating user:', ['exception' => $e]);
             return redirect()->back()->with('error', 'Failed to register user.');
         }
+    }
+    public function confirmation()
+    {
+        return view('register.confirmation');
     }
 
     public function getKecamatanByKota($id)

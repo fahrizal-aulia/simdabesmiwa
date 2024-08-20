@@ -17,7 +17,7 @@ class DashboardwargaController extends Controller
      */
     public function index()
     {
-        $user = user::where('status_approve', 1)->where('role', 2)->get();
+        $user = user::where('status_approve', 1)->where('role', 2)->where('id_kota',auth()->user()->id_kota)->get();
         return View ('admin.warga.index',[
             'users'=> $user
         ]);

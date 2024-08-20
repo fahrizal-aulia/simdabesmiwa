@@ -12,14 +12,18 @@ use Illuminate\Support\Facades\Log;
 class DashboardkeberangkatanController extends Controller
 {
     public function index()
-    {
-        $keberangkatan = Keberangkatan::with('user')->get();
-        // dd($keberangkatan);
-        return view('admin.keberangkatan.index',[
-            'keberangkatan'=> $keberangkatan
+{
+    $idKota = auth()->user()->id_kota;
 
-            ]);
-    }
+    $keberangkatan = Keberangkatan::join('users', 'keberangkatan.id_user', '=', 'users.id')
+        ->where('users.id_kota', $idKota)
+        ->select('keberangkatan.*')
+        ->get();
+
+    return view('admin.keberangkatan.index', [
+        'keberangkatan' => $keberangkatan
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.

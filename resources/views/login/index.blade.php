@@ -179,7 +179,7 @@
                 <button type="submit" class="btn">Login</button>
             </form>
             <div class="register-link">
-                <p>Buat Akun? <a href="/register">Daftar Disini</a></p>
+                <p>Buat Akun PMI? <a href="/register">Daftar Disini</a></p>
             </div>
         </div>
     </div>

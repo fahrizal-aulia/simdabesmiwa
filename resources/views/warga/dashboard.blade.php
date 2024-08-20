@@ -5,35 +5,32 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Datatable</h3>
+            <h3>Dashboard</h3>
         </div>
     </div>
 </div>
 <section class="section">
     <div class="card">
-        <div class="card-header">
-            Simple Datatable
-        </div>
         <div class="card-body">
-            <table class="table table-striped" id="table1">
+            <table class="table table-striped" >
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>City</th>
-                        <th>Status</th>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Status Pernikahan</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Pendidikan Terakhir</th>
+                        <th>Tanggungan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Graiden</td>
-                        <td>vehicula.aliquet@semconsequat.co.uk</td>
-                        <td>076 4820 8838</td>
-                        <td>Offenburg</td>
-                        <td>
-                            <span class="badge bg-success">Active</span>
-                        </td>
+                        <td> {{ $user->nik }}</td>
+                        <td> {{ $user->nama }}</td>
+                        <td>{{ $user->status_perkawinan }}</td>
+                        <td>{{ $user->jenis_kelamin }}</td>
+                        <td>{{ $user->pendidikan_terakhir }}</td>
+                        <td>{{ $user->tanggungan }}</td>
                     </tr>
                 </tbody>
             </table>
