@@ -1,8 +1,8 @@
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
-        <div class="sidebar-header">
+        {{-- <div class="sidebar-header">
             <img src="{{ asset('image/logo1.png') }}" alt="Logo">
-        </div>
+        </div> --}}
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Main Menu</li>
@@ -41,7 +41,8 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                         <div class="avatar mr-1">
-                            <img src="assets/images/avatar/avatar-s-1.png" alt="Avatar">
+                            {{-- <img src="assets/images/avatar/avatar-s-1.png" alt="Avatar"> --}}
+                            <img src="{{ asset('storage/' . $user->image) }}" alt="Avatar">
                         </div>
                         <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->nama }}</div>
                     </a>

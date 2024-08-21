@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kecamatan;
-use App\Models\kota;
+use App\Models\Kecamatan;
+use App\Models\Kota;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -55,6 +56,13 @@ class RegisterController extends Controller
             $validatedData['password'] = Hash::make($request->input('password'));
         }
 
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->store('images', 'public'); // Store image in public disk
+            $validatedData['image'] = $imagePath;
+        }
+
         // Try to create user
         try {
             User::create($validatedData);
@@ -65,6 +73,7 @@ class RegisterController extends Controller
             return redirect()->back()->with('error', 'Failed to register user.');
         }
     }
+
     public function confirmation()
     {
         return view('register.confirmation');
