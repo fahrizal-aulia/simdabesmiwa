@@ -30,20 +30,17 @@
                 </select>
             </div>
 
-            <!-- Alasan Kepulangan -->
             <div class="form-group">
-                <label for="alasan_kepulangan">Jadwal Kembali Keluar Negeri:</label>
-                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+                <label for="jadwal_kembali">Jadwal Kembali Keluar Negeri:</label>
+                <input type="date" class="form-control" id="jadwal_kembali" name="jadwal_kembali" required>
             </div>
-            <!-- Alasan Kepulangan -->
             <div class="form-group">
-                <label for="alasan_kepulangan">Nomer Hp aktif:</label>
-                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+                <label for="no_hp">Nomer Hp aktif:</label>
+                <textarea class="form-control" id="no_hp" name="no_hp" rows="3" required></textarea>
             </div>
-            <!-- Alasan Kepulangan -->
             <div class="form-group">
-                <label for="alasan_kepulangan">Pekerjaan</label>
-                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+                <label for="pekerjaan">Pekerjaan</label>
+                <textarea class="form-control" id="pekerjaan" name="pekerjaan" rows="3" required></textarea>
             </div>
             <!-- Alasan Kepulangan -->
             <div class="form-group">

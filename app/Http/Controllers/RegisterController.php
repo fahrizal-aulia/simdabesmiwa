@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         // Perform validation
         $validatedData = $request->validate([
-            'nik' => 'required|max:16|unique:users',
+            'nik' => 'required|min:16|max:16|unique:users',
             'id_kota' => 'required',
             'id_kecamatan' => 'required',
             'jenis_kelamin' => 'required',

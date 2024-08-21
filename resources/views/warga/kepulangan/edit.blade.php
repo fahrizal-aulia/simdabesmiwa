@@ -48,22 +48,29 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                    <!-- Alasan Kepulangan -->
                 <div class="form-group">
-                    <label for="alasan_kepulangan">Jadwal Kembali Keluar Negeri:</label>
-                    <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
-                </div>
-                <!-- Alasan Kepulangan -->
-                <div class="form-group">
-                    <label for="alasan_kepulangan">Nomer Hp aktif:</label>
-                    <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
-                </div>
-                <!-- Alasan Kepulangan -->
-                <div class="form-group">
-                    <label for="alasan_kepulangan">Pekerjaan</label>
-                    <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+                    <label for="no_hp">Nomor HP/WA aktif</label>
+                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" value="{{ old('no_hp', $pulang->no_hp) }}">
+                    @error('no_hp')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="pekerjaan">Pekerjaan</label>
+                    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" id="pekerjaan" name="pekerjaan" value="{{ old('pekerjaan', $pulang->pekerjaan) }}">
+                    @error('pekerjaan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="tanggal_kembali">Tanggal Kembali Ke Luar Negeri</label>
+                    <input type="date" class="form-control @error('tanggal_kembali') is-invalid @enderror" id="tanggal_kembali" name="tanggal_kembali" value="{{ old('tanggal_kembali', $pulang->tanggal_kembali ? $pulang->tanggal_kembali->format('Y-m-d') : '') }}">
+                    @error('tanggal_kembali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
                 <div class="form-group">
                     <label for="alasan_kepulangan">Alasan Kepulangan</label>
                     <textarea class="form-control @error('alasan_kepulangan') is-invalid @enderror" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required>{{ old('alasan_kepulangan', $pulang->alasan_kepulangan) }}</textarea>

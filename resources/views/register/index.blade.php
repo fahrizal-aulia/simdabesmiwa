@@ -219,7 +219,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="id_kota">Kota</label>
+                    <label for="id_kota">Kota/Kabupaten</label>
                     <select class="form-control @error('id_kota') is-invalid @enderror" name="id_kota" id="id_kota" required>
                         <option value="">Pilih Kota</option>
                         @foreach ($kota as $kotas)
@@ -288,7 +288,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="nomer_telfon">Nomor Telepon</label>
+                    <label for="nomer_telfon">Nomer HP/WA</label>
                     <input type="tel" name="nomer_telfon" class="form-control @error('nomer_telfon') is-invalid @enderror" id="nomer_telfon" placeholder="Nomor Telepon" required value="{{ old('nomer_telfon') }}">
                     @error('nomer_telfon')
                     <div class="invalid-feedback">
@@ -324,7 +324,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="tanggungan">Tanggungan</label>
+                    <label for="tanggungan">Tanggungan Keluarga</label>
                     <input type="number" name="tanggungan" class="form-control @error('tanggungan') is-invalid @enderror" id="tanggungan" placeholder="Jumlah Tanggungan" required value="{{ old('tanggungan') }}">
                     @error('tanggungan')
                     <div class="invalid-feedback">

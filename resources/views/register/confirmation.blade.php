@@ -79,10 +79,10 @@
             <h2>Terima Kasih atas Pendaftaran Anda!</h2>
             <p>Registrasi Anda telah berhasil. Silakan hubungi admin untuk konfirmasi lebih lanjut dan aktivasi akun Anda.</p>
         </div>
-        <div class="contact-info">
+        {{-- <div class="contact-info">
             <p>Jika Anda memerlukan bantuan lebih lanjut, hubungi kami di <a href="mailto:support@example.com">support@example.com</a> atau telepon ke <strong>(021) 123-4567</strong>.</p>
-        </div>
-        <a href="/login" class="btn">Kembali ke Login</a>
+        </div> --}}
+        <a href="/login" class="btn">Hubungi Admin</a>
     </div>
 </body>
 </html>

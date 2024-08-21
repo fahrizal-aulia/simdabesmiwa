@@ -19,7 +19,7 @@ class KepulanganController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         // @dd('hai');
         // Mengambil semua data dari tabel kepulangan
         $kepulangan = kepulangan::with('user')->where('id_user',auth()->user()->id)->get();
@@ -51,6 +51,9 @@ class KepulanganController extends Controller
             'tanggal_kepulangan' => 'required|date',
             'status_perkawinan' => 'required|boolean',
             'alasan_kepulangan' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
+            'jadwal_kembali' => 'required|date',
+            'no_hp' => 'required|string|max:255',
             'alamat_kepulangan' => 'required|string|max:255',
         ]);
 
@@ -60,19 +63,22 @@ class KepulanganController extends Controller
             'tanggal_kepulangan' => $request->tanggal_kepulangan,
             'status_perkawinan' => $request->status_perkawinan,
             'alasan_kepulangan' => $request->alasan_kepulangan,
+            'pekerjaan' => $request->pekerjaan,
+            'jadwal_kembali' => $request->jadwal_kembali,
+            'no_hp' => $request->no_hp,
             'alamat_kepulangan' => $request->alamat_kepulangan,
             'status_approve' => false,
         ]);
         return redirect('/kepulangan')->with('success', 'Data kepulangan berhasil ditambahkan.');
     }
 
-    
+
     /**
      * Display the specified resource.
      */
     public function show(kepulangan $kepulangan)
     {
-        
+
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
 
@@ -107,6 +113,9 @@ class KepulanganController extends Controller
             'alamat_kepulangan' => 'required|string|max:255',
             'tanggal_kepulangan' => 'required|date',
             'status_perkawinan' => 'required|boolean',
+            'pekerjaan' => 'required|string|max:255',
+            'jadwal_kembali' => 'required|date',
+            'no_hp' => 'required|string|max:255',
             'status_approve' => 'required|boolean', // Pastikan untuk validasi boolean
             'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ];

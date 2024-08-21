@@ -27,7 +27,6 @@
                     <td>{{ $pulang->tanggal_kepulangan->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
                 </tr>
 
-
                 <tr>
                     <th><strong>Status Perkawinan:</strong></th>
                     <td>
@@ -37,6 +36,18 @@
                 <tr>
                     <th><strong>Alasan Kepulangan:</strong></th>
                     <td>{{ $pulang->alasan_kepulangan }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Jadwal Kembali Ke Luar Negeri:</strong></th>
+                    <td>{{ $pulang->tanggal_kembali->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
+                </tr>
+                <tr>
+                    <th><strong>Pekerjaan:</strong></th>
+                    <td>{{ $pulang->pekerjaan }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Nomer HP/WA aktif:</strong></th>
+                    <td>{{ $pulang->no_hp }}</td>
                 </tr>
                 <tr>
                     <th><strong>Alamat Kepulangan:</strong></th>
