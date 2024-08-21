@@ -25,6 +25,7 @@ class KeberangkatanSeeder extends Seeder
                 'biaya_pemberangkatan' => 5000000,
                 'masa_kontrak' => 24, // dalam bulan
                 'gaji_perbulan' => 15000000,
+                'no_hp' => '081234567890',
                 'asuransi' => 'Asuransi Kesehatan',
                 'status_approve' => false,
             ],

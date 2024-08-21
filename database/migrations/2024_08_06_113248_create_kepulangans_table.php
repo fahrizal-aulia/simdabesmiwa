@@ -19,6 +19,9 @@ return new class extends Migration
             $table->boolean('status_perkawinan')->default(false);
             $table->text('alasan_kepulangan');
             $table->string('alamat_kepulangan');
+            $table->string('pekerjaan')->nullable();
+            $table->date('jadwal_kembali')->nullable();
+            $table->string('no_hp')->nullable();
             $table->boolean('status_approve')->default(false);
             $table->timestamps();
         });

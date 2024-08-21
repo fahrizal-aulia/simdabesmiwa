@@ -47,6 +47,27 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="negara_tujuan">Kota / Kabupaten</label>
+                                <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
+                                @error('negara_tujuan')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="negara_tujuan">nomer HP/WA aktif</label>
+                                <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
+                                @error('negara_tujuan')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="negara_tujuan">Tanggungan Keluarga</label>
+                                <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
+                                @error('negara_tujuan')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="negara_tujuan">Negara Tujuan</label>
                                 <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
                                 @error('negara_tujuan')

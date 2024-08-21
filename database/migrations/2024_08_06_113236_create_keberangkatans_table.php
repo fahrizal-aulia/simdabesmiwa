@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('biaya_pemberangkatan');
             $table->integer('masa_kontrak');
             $table->integer('gaji_perbulan');
+            $table->string('no_hp')->nullable();
             $table->string('asuransi');
             $table->boolean('status_approve')->default(false);
             $table->timestamps();

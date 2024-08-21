@@ -32,6 +32,21 @@
 
             <!-- Alasan Kepulangan -->
             <div class="form-group">
+                <label for="alasan_kepulangan">Jadwal Kembali Keluar Negeri:</label>
+                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+            </div>
+            <!-- Alasan Kepulangan -->
+            <div class="form-group">
+                <label for="alasan_kepulangan">Nomer Hp aktif:</label>
+                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+            </div>
+            <!-- Alasan Kepulangan -->
+            <div class="form-group">
+                <label for="alasan_kepulangan">Pekerjaan</label>
+                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+            </div>
+            <!-- Alasan Kepulangan -->
+            <div class="form-group">
                 <label for="alasan_kepulangan">Alasan Kepulangan:</label>
                 <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
             </div>

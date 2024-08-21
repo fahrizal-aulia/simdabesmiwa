@@ -21,6 +21,7 @@ class KepulanganSeeder extends Seeder
                 'status_perkawinan' => false,
                 'alasan_kepulangan' => 'Kontrak Selesai',
                 'alamat_kepulangan' => 'Jl. Contoh No. 1',
+                'no_hp' => '081234567890',
                 'status_approve' => false,
             ],
             // Tambahkan data kepulangan lain sesuai kebutuhan

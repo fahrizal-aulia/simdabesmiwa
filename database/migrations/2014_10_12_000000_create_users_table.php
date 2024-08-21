@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('role')->default(2); // 1 = admin, 2 = warga
             $table->foreignId('id_kota');
             $table->foreignId('id_kecamatan');
-            $table->integer('nik')->unique();
+            $table->bigInteger('nik')->unique();
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('kota_kelahiran');

@@ -29,7 +29,7 @@ class RegisterController extends Controller
 
         // Perform validation
         $validatedData = $request->validate([
-            'nik' => 'required|max:20|unique:users',
+            'nik' => 'required|max:16|unique:users',
             'id_kota' => 'required',
             'id_kecamatan' => 'required',
             'jenis_kelamin' => 'required',
@@ -45,7 +45,7 @@ class RegisterController extends Controller
             'alamat_lengkap' => 'required|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'status_approve' => 'required|integer',
-            'password' => ['required', 'min:5', 'max:255']
+            'password' => ['required', 'min:8', 'max:255']
         ]);
 
         Log::info('Validated data:', $validatedData);
