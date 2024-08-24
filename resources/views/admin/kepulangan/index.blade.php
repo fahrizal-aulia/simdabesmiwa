@@ -35,11 +35,11 @@
                         <th>No</th>
                         <th>NIK</th>
                         <th>Nama</th>
-                        <th>Tanggal Kepulangan</th>
-                        <th>Status Perkawinan</th>
                         <th>Alasan Kepulangan</th>
                         <th>Alamat Kepulangan</th>
-                        <th>Status Approve</th>
+                        <th>Tanggal Kepulangan</th>
+                        {{-- <th>Status Perkawinan</th> --}}
+                        {{-- <th>Status Approve</th> --}}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -49,11 +49,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $pulang->user->nik }}</td>
                         <td>{{ $pulang->user->nama }}</td>
-                        <td>{{ \Carbon\Carbon::parse($pulang->tanggal_kepulangan)->format('d M Y') }}</td>
-                        <td>{{ $pulang->status_perkawinan ? 'Sudah Kawin' : 'Belum Kawin' }}</td>
                         <td>{{ $pulang->alasan_kepulangan }}</td>
                         <td>{{ $pulang->alamat_kepulangan }}</td>
-                        <td>{{ $pulang->status_approve ? 'Disetujui' : 'Belum Disetujui' }}</td>
+                        <td>{{ \Carbon\Carbon::parse($pulang->tanggal_kepulangan)->format('d M Y') }}</td>
                         <td>
                             <a href="/dashboard/kepulangan/{{ $pulang->id }}" class="badge bg-info"><span data-feather="eye"></span></a>
                             <a href="/dashboard/kepulangan/{{ $pulang->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>

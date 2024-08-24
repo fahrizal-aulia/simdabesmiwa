@@ -17,6 +17,6 @@ class keberangkatan extends Model
     }
     public function kepulangan()
     {
-        return $this->hasMany(Kepulangan::class, 'id_keberangkatan');
+        return $this->hasMany(kepulangan::class, 'id_keberangkatan');
     }
 }

@@ -146,6 +146,6 @@ class DashboardKepulanganController extends Controller
         $kepulangan->delete();
 
         // Redirect dengan pesan sukses
-        return redirect('/dashboard/admin')->with('success', 'Data kepulangan telah dihapus!');
+        return redirect('/dashboard/kepulangan')->with('success', 'Data kepulangan telah dihapus!');
     }
 }

@@ -56,7 +56,7 @@ class KeberangkatanController extends Controller
             'status_perkawinan' => 'required|boolean',
             'biaya_pemberangkatan' => 'required|numeric',
             'masa_kontrak' => 'required|integer',
-            'gaji_perbulan' => 'required|numeric',
+            'gaji_perbulan' => 'required|integer',
             'asuransi' => 'required|string',
         ]);
 
