@@ -14,11 +14,11 @@
         <div class="card-body">
             <table class="table">
                 <tr>
-                    <th><strong>Kota:</strong></th>
+                    <th><strong>Kota/kabupaten:</strong></th>
                     <td>{{ $user->kota->nama_kota }}</td>
                 </tr>
                 <tr>
-                    <th><strong>ID Kecamatan:</strong></th>
+                    <th><strong>Kecamatan:</strong></th>
                     <td>{{ $user->kecamatan->nama_kecamatan }}</td>
                 </tr>
                 <tr>

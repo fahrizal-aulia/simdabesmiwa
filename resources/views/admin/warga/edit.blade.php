@@ -38,7 +38,7 @@
 
 
                 <div class="form-group">
-                    <label for="id_kota">Kota</label>
+                    <label for="id_kota">Kota/kabupaten</label>
                     <select class="form-control @error('id_kota') is-invalid @enderror" name="id_kota" id="id_kota" required>
                         <option value="">Pilih Kota</option>
                         @foreach ($kota as $kota)

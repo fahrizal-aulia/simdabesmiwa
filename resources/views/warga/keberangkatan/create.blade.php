@@ -33,10 +33,30 @@
                                 <label for="nama">Nama</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama', $users->nama ) }}" disabled readonly>
                                 @error('nama')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-
+                            <div class="form-group">
+                                <label for="kota">kota/kabupaten</label>
+                                <input type="text" class="form-control @error('kota') is-invalid @enderror" id="kota" name="kota" value="{{ old('kota', $users->kota->nama_kota ) }}" disabled readonly>
+                                @error('kota')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="nomer_telfon">Nomer HP/WA</label>
+                                <input type="text" class="form-control @error('nomer_telfon') is-invalid @enderror" id="nomer_telfon" name="nomer_telfon" value="{{ old('nomer_telfon', $users->nomer_telfon ) }}" disabled readonly>
+                                @error('nomer_telfon')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggungan">Tanggungan Keluarga</label>
+                                <input type="text" class="form-control @error('tanggungan') is-invalid @enderror" id="tanggungan" name="tanggungan" value="{{ old('tanggungan', $users->tanggungan ) }}" disabled readonly>
+                                @error('tanggungan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <div class="form-group">
                                 <label for="nama_perusahaan">Nama Perusahaan</label>
@@ -46,27 +66,6 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label for="negara_tujuan">Kota / Kabupaten</label>
-                                <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
-                                @error('negara_tujuan')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="negara_tujuan">nomer HP/WA aktif</label>
-                                <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
-                                @error('negara_tujuan')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="negara_tujuan">Tanggungan Keluarga</label>
-                                <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
-                                @error('negara_tujuan')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
                             <div class="form-group">
                                 <label for="negara_tujuan">Negara Tujuan</label>
                                 <input type="text" id="negara_tujuan" name="negara_tujuan" class="form-control" value="{{ old('negara_tujuan') }}" required>
