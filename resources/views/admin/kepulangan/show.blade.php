@@ -18,45 +18,15 @@
                     <td>{{ $pulang->user->nik }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Nama:</strong></th>
+                    <th><strong>Nama Lengkap:</strong></th>
                     <td>{{ $pulang->user->nama }}</td>
                 </tr>
-                {{-- <tr>
-                    <th><strong>Alamat:</strong></th>
-                    <td>{{ $pulang->user->alamat_lengkap }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Nama:</strong></th>
-                    <td>{{ $pulang->user->nomer_telfon }}</td>
-                </tr> --}}
-                {{-- <tr>
-                    <th><strong>Tanggal Lahir:</strong></th>
-                    <td> {{ \Carbon\Carbon::parse($pulang->tanggal_kepulangan)->format('d M Y') }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Pendapatan Perbulan:</strong></th>
-                    <td>{{ number_format($pulang->biaya_keberangkatan, 2, ',', '.') }}</td>
-                </tr> --}}
-                <tr>
-                    <th><strong>Nama Perusahaan:</strong></th>
-                    <td>{{ $pulang->nama_perusahaan }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Negara Tujuan:</strong></th>
-                    <td>{{ $pulang->negara_tujuan }}</td>
-                </tr>
+
                 <tr>
                     <th><strong>Tanggal Keberangkatan:</strong></th>
-                    <td>{{ $pulang->tanggal_kepulangan->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
+                    <td>{{ $pulang->tanggal_kepulangan ? $pulang->tanggal_kepulangan->format('d M Y') : '-' }}</td>
                 </tr>
-                <tr>
-                    <th><strong>Jenis Pekerjaan:</strong></th>
-                    <td>{{ $pulang->jenis_pekerjaan }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Alamat di Luar Negeri:</strong></th>
-                    <td>{{ $pulang->alamat_di_luar_negeri }}</td>
-                </tr>
+
                 <tr>
                     <th><strong>Status Perkawinan:</strong></th>
                     <td>
@@ -64,20 +34,24 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><strong>Biaya Pemberangkatan:</strong></th>
-                    <td>{{ number_format($pulang->biaya_pemberangkatan, 0, ',', '.') }}</td> <!-- Format angka sesuai kebutuhan -->
+                    <th><strong>Alasan Kepulangan:</strong></th>
+                    <td>{{ $pulang->alasan_kepulangan }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Masa Kontrak (bulan):</strong></th>
-                    <td>{{ $pulang->masa_kontrak }}</td>
+                    <th><strong>Jadwal Kembali Ke Luar Negeri:</strong></th>
+                    <td>{{  $pulang->jadwal_kembali ? $pulang->jadwal_kembali->format('d M Y') : '-' }}</td> <!-- Format tanggal sesuai kebutuhan -->
                 </tr>
                 <tr>
-                    <th><strong>Gaji Per Bulan:</strong></th>
-                    <td>{{ number_format($pulang->gaji_perbulan, 0, ',', '.') }}</td> <!-- Format angka sesuai kebutuhan -->
+                    <th><strong>Pekerjaan:</strong></th>
+                    <td>{{ $pulang->pekerjaan ? $pulang->pekerjaan : "-" }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Asuransi:</strong></th>
-                    <td>{{ $pulang->asuransi }}</td>
+                    <th><strong>Nomer HP/WA aktif:</strong></th>
+                    <td>{{ $pulang->no_hp }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Alamat Kepulangan:</strong></th>
+                    <td>{{ $pulang->alamat_kepulangan }}</td>
                 </tr>
 
                 {{-- <tr>

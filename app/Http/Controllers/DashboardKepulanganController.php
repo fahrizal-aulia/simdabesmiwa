@@ -70,6 +70,7 @@ class DashboardKepulanganController extends Controller
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
+        $kepulangan->tanggal_kembali = Carbon::parse($kepulangan->tanggal_kembali);
 
         // Mengirim data ke view
         return view('admin.kepulangan.show', [
@@ -84,6 +85,7 @@ class DashboardKepulanganController extends Controller
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
+        $kepulangan->tanggal_kembali = Carbon::parse($kepulangan->tanggal_kembali);
 
         // Mengirim data ke view
         return view('admin.kepulangan.edit', [

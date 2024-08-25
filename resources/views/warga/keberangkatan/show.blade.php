@@ -28,7 +28,7 @@
                                 <td>{{ $berangkat->user->nik }}</td>
                             </tr>
                             <tr>
-                                <th><strong>Nama:</strong></th>
+                                <th><strong>Nama Lengkap:</strong></th>
                                 <td>{{ $berangkat->user->nama }}</td>
                             </tr>
                             {{-- <tr>

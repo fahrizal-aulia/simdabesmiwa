@@ -36,7 +36,7 @@
                     <tr>
                         <th>No</th>
                         <th>NIK</th>
-                        <th>Nama</th>
+                        <th>Nama Lengkap</th>
                         <th>Alasan Kepulangan</th>
                         <th>Alamat Kepulangan</th>
                         <th>Tanggal Kepulangan</th>

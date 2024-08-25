@@ -14,7 +14,22 @@
         <div class="card-body">
             <table class="table">
                 <tr>
-                    <th><strong>Kota/kabupaten:</strong></th>
+                    <th><strong>NIK:</strong></th>
+                    <td>{{ $user->nik }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Nama Lengkap:</strong></th>
+                    <td>{{ $user->nama }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Alamat Lengkap:</strong></th>
+                    <td>
+                        {{ $user->alamat_lengkap }}
+                        {{-- RT: {{ $user->rt }}, RW: {{ $user->rw }}, Desa: {{ $user->desa }} --}}
+                    </td>
+                </tr>
+                <tr>
+                    <th><strong>Kota/Kabupaten:</strong></th>
                     <td>{{ $user->kota->nama_kota }}</td>
                 </tr>
                 <tr>
@@ -22,20 +37,16 @@
                     <td>{{ $user->kecamatan->nama_kecamatan }}</td>
                 </tr>
                 <tr>
-                    <th><strong>NIK:</strong></th>
-                    <td>{{ $user->nik }}</td>
+                    <th><strong>Nomor HP/WA Aktif:</strong></th>
+                    <td>{{ $user->nomer_telfon }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Nama:</strong></th>
-                    <td>{{ $user->nama }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Kota Kelahiran:</strong></th>
+                    <th><strong>Tempat Lahir:</strong></th>
                     <td>{{ $user->kota_kelahiran }}</td>
                 </tr>
                 <tr>
                     <th><strong>Tanggal Lahir:</strong></th>
-                    <td> {{ \Carbon\Carbon::parse($user->tanggal_lahir)->format('d M Y') }}</td>
+                    <td>{{ $user->tanggal_lahir->format('d M Y') }}</td>
                 </tr>
                 <tr>
                     <th><strong>Pekerjaan:</strong></th>
@@ -52,10 +63,6 @@
                     <td>{{ number_format($user->pendapatan_perbulan, 2, ',', '.') }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Nomor Telepon:</strong></th>
-                    <td>{{ $user->nomer_telfon }}</td>
-                </tr>
-                <tr>
                     <th><strong>Pendidikan Terakhir:</strong></th>
                     <td>{{ $user->pendidikan_terakhir }}</td>
                 </tr>
@@ -64,11 +71,7 @@
                     <td>{{ $user->tanggungan }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Alamat Lengkap:</strong></th>
-                    <td>{{ $user->alamat_lengkap }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Image:</strong></th>
+                    <th><strong>Gambar Foto:</strong></th>
                     <td>
                         @if ($user->image)
                             <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" style="width: 150px; height: auto;">

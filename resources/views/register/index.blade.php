@@ -269,10 +269,11 @@
                     </div>
                     @enderror
                 </div>
+
                 <div class="form-group">
-                    <label for="pendapatan_perbulan">Pendapatan Perbulan</label>
-                    <input type="number" name="pendapatan_perbulan" class="form-control @error('pendapatan_perbulan') is-invalid @enderror" id="pendapatan_perbulan" placeholder="Pendapatan Perbulan" required value="{{ old('pendapatan_perbulan') }}">
-                    @error('pendapatan_perbulan')
+                    <label for="alamat_lengkap">Alamat Lengkap</label>
+                    <input type="text" name="alamat_lengkap" class="form-control @error('alamat_lengkap') is-invalid @enderror" id="alamat_lengkap" placeholder="Alamat Lengkap" required value="{{ old('alamat_lengkap') }}">
+                    @error('alamat_lengkap')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -315,9 +316,9 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="alamat_lengkap">Alamat Lengkap</label>
-                    <input type="text" name="alamat_lengkap" class="form-control @error('alamat_lengkap') is-invalid @enderror" id="alamat_lengkap" placeholder="Alamat Lengkap" required value="{{ old('alamat_lengkap') }}">
-                    @error('alamat_lengkap')
+                    <label for="pendapatan_perbulan">Pendapatan Perbulan</label>
+                    <input type="number" name="pendapatan_perbulan" class="form-control @error('pendapatan_perbulan') is-invalid @enderror" id="pendapatan_perbulan" placeholder="Pendapatan Perbulan" required value="{{ old('pendapatan_perbulan') }}">
+                    @error('pendapatan_perbulan')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

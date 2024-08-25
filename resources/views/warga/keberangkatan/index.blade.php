@@ -37,7 +37,7 @@
                     <tr>
                         <th>No</th>
                         <th>NIK</th>
-                        <th>Nama</th>
+                        <th>Nama Lengkap</th>
                         <th>Negara tujuan</th>
                         <th>Tanggal Keberangkatan</th>
                         <th>Action</th>

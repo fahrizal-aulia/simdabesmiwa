@@ -14,23 +14,35 @@
         <div class="card-body">
             <table class="table">
                 <tr>
-                    <th><strong>Kota:</strong></th>
-                    <td>{{ $user->kota->nama_kota }}</td>
-                </tr>
-                <tr>
-                    <th><strong>ID Kecamatan:</strong></th>
-                    <td>{{ $user->kecamatan->nama_kecamatan }}</td>
-                </tr>
-                <tr>
                     <th><strong>NIK:</strong></th>
                     <td>{{ $user->nik }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Nama:</strong></th>
+                    <th><strong>Nama Lengkap:</strong></th>
                     <td>{{ $user->nama }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Kota Kelahiran:</strong></th>
+                    <th><strong>Alamat Lengkap:</strong></th>
+                    <td>
+                        {{ $user->alamat_lengkap }}
+                        {{-- Jika ingin menambahkan detail alamat, uncomment bagian berikut --}}
+                        {{-- RT: {{ $user->rt }}, RW: {{ $user->rw }}, Desa: {{ $user->desa }} --}}
+                    </td>
+                </tr>
+                <tr>
+                    <th><strong>Kota/Kabupaten:</strong></th>
+                    <td>{{ $user->kota->nama_kota }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Kecamatan:</strong></th>
+                    <td>{{ $user->kecamatan->nama_kecamatan }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Nomor HP/WA Aktif:</strong></th>
+                    <td>{{ $user->nomer_telfon }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Tempat Lahir:</strong></th>
                     <td>{{ $user->kota_kelahiran }}</td>
                 </tr>
                 <tr>
@@ -52,10 +64,6 @@
                     <td>{{ number_format($user->pendapatan_perbulan, 2, ',', '.') }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Nomor Telepon:</strong></th>
-                    <td>{{ $user->nomer_telfon }}</td>
-                </tr>
-                <tr>
                     <th><strong>Pendidikan Terakhir:</strong></th>
                     <td>{{ $user->pendidikan_terakhir }}</td>
                 </tr>
@@ -64,14 +72,10 @@
                     <td>{{ $user->tanggungan }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Alamat Lengkap:</strong></th>
-                    <td>{{ $user->alamat_lengkap }}</td>
-                </tr>
-                <tr>
-                    <th><strong>Image:</strong></th>
+                    <th><strong>Gambar Foto:</strong></th>
                     <td>
                         @if ($user->image)
-                            <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" style="width: 150px; height: auto;">
+                            <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" class="img-fluid" style="max-width: 150px;">
                         @else
                             Tidak ada gambar
                         @endif
@@ -80,8 +84,8 @@
                 <tr>
                     <th><strong>Status Approve:</strong></th>
                     <td>
-                        <span class="badge bg-{{ $user->status_approve == 1 ? 'danger' : 'success' }}">
-                            {{ $user->status_approve == 1 ? 'Belum Di Approve' : 'Disetujui' }}
+                        <span class="badge bg-{{ $user->status_approve == 1 ? 'success' : 'danger' }}">
+                            {{ $user->status_approve == 1 ? 'Disetujui' : 'Belum Di Approve' }}
                         </span>
                     </td>
                 </tr>

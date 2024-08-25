@@ -27,7 +27,7 @@
                     <tr>
                         <th>No</th>
                         <th>NIK</th>
-                        <th>Nama</th>
+                        <th>Nama Lengkap</th>
                         <th>Status Approve</th>
                         <th>Action</th>
                     </tr>

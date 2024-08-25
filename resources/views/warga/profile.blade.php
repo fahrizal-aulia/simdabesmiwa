@@ -56,7 +56,7 @@
 
                     <!-- Nama -->
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label font-weight-bold">Nama:</label>
+                        <label class="col-sm-4 col-form-label font-weight-bold">Nama Lengkap:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control @if(request()->has('edit')) @else form-control-plaintext @endif" id="nama" name="nama" value="{{ $user->nama }}" @if(!request()->has('edit')) readonly @endif>
                         </div>

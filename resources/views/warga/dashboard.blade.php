@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>NIK</th>
-                        <th>Nama</th>
+                        <th>Nama Lengkap</th>
                         <th>Status Pernikahan</th>
                         <th>Jenis Kelamin</th>
                         <th>Pendidikan Terakhir</th>
