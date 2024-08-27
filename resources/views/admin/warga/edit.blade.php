@@ -38,7 +38,7 @@
 
                 <!-- Alamat Lengkap, RT, RW, Desa -->
                 <div class="mb-3">
-                    <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
+                    <label for="alamat_lengkap" class="form-label">Alamat Lengkap (RT, RW, desa)</label>
                     <textarea class="form-control @error('alamat_lengkap') is-invalid @enderror" id="alamat_lengkap" name="alamat_lengkap" rows="3">{{ old('alamat_lengkap', $user->alamat_lengkap) }}</textarea>
                     @error('alamat_lengkap')
                         <div class="invalid-feedback">

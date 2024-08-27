@@ -48,6 +48,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="no_hp">Nomor HP/WA aktif</label>
                     <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" value="{{ old('no_hp', $pulang->no_hp) }}">
@@ -65,12 +66,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tanggal_kembali">Tanggal Kembali Ke Luar Negeri</label>
-                    <input type="date" class="form-control @error('tanggal_kembali') is-invalid @enderror" id="tanggal_kembali" name="tanggal_kembali" value="{{ old('tanggal_kembali', $pulang->tanggal_kembali ? $pulang->tanggal_kembali->format('Y-m-d') : '') }}">
-                    @error('tanggal_kembali')
+                    <label for="jadwal_kembali" class="form-label">Jadwal Kembali Ke Luar Negeri</label>
+                    <div>
+                        <input type="checkbox" id="jadwal_kembali_checkbox" {{ old('jadwal_kembali', $pulang->jadwal_kembali) ? 'checked' : '' }}>
+                        <label for="jadwal_kembali_checkbox">Ada Jadwal Kembali</label>
+                    </div>
+                    <input type="date" class="form-control @error('jadwal_kembali') is-invalid @enderror" id="jadwal_kembali" name="jadwal_kembali" value="{{ old('jadwal_kembali', $pulang->jadwal_kembali ? $pulang->jadwal_kembali->format('Y-m-d') : '') }}" {{ old('jadwal_kembali') ? '' : 'disabled' }}>
+                    @error('jadwal_kembali')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="alasan_kepulangan">Alasan Kepulangan</label>
                     <textarea class="form-control @error('alasan_kepulangan') is-invalid @enderror" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required>{{ old('alasan_kepulangan', $pulang->alasan_kepulangan) }}</textarea>
@@ -81,7 +87,7 @@
 
                 <div class="form-group">
                     <label for="alamat_kepulangan">Alamat Kepulangan</label>
-                    <input type="text" class="form-control @error('alamat_kepulangan') is-invalid @enderror" id="alamat_kepulangan" name="alamat_kepulangan" value="{{ old('alamat_kepulangan', $pulang->alamat_kepulangan) }}" required>
+                    <textarea class="form-control @error('alamat_kepulangan') is-invalid @enderror" id="alamat_kepulangan" name="alamat_kepulangan" rows="3" required>{{ old('alamat_kepulangan', $pulang->alamat_kepulangan) }}</textarea>
                     @error('alamat_kepulangan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -99,5 +105,29 @@
         </div>
     </div>
 </section>
+
+<script>
+    // JavaScript untuk mengaktifkan atau menonaktifkan field jadwal kembali berdasarkan checkbox
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkbox = document.getElementById('jadwal_kembali_checkbox');
+        const jadwalKembaliInput = document.getElementById('jadwal_kembali');
+
+        // Set the initial state based on checkbox and input value
+        function updateJadwalKembaliState() {
+            if (checkbox.checked) {
+                jadwalKembaliInput.disabled = false;
+            } else {
+                jadwalKembaliInput.disabled = true;
+                jadwalKembaliInput.value = ''; // Clear the value if checkbox is unchecked
+            }
+        }
+
+        // Listen for changes to the checkbox
+        checkbox.addEventListener('change', updateJadwalKembaliState);
+
+        // Initialize the state when the page loads
+        updateJadwalKembaliState();
+    });
+</script>
 
 @endsection

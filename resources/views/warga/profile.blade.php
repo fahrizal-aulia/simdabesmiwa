@@ -43,7 +43,7 @@
 
             <!-- Informasi Profil -->
             <div class="col-md-9">
-                <form method="POST" action="{{ route('profile') }}" onsubmit="return confirmUpdate()">
+                <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data" onsubmit="return confirmUpdate()">
                     @csrf
 
                     <!-- NIK -->
@@ -62,9 +62,9 @@
                         </div>
                     </div>
 
-                    <!-- Kota Kelahiran -->
+                    <!-- tempat kelahiran -->
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label font-weight-bold">Kota Kelahiran:</label>
+                        <label class="col-sm-4 col-form-label font-weight-bold">Tempat Kelahiran:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control @if(request()->has('edit')) @else form-control-plaintext @endif" id="kota_kelahiran" name="kota_kelahiran" value="{{ $user->kota_kelahiran }}" @if(!request()->has('edit')) readonly @endif>
                         </div>
@@ -86,13 +86,26 @@
                         </div>
                     </div>
 
-                    <!-- Nomer Telepon -->
+                    <!-- Nomor Telepon -->
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label font-weight-bold">Nomor Telepon:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control @if(request()->has('edit')) @else form-control-plaintext @endif" id="nomer_telfon" name="nomer_telfon" value="{{ $user->nomer_telfon }}" @if(!request()->has('edit')) readonly @endif>
                         </div>
                     </div>
+
+                    <!-- Upload Gambar -->
+                    @if(request()->has('edit'))
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label font-weight-bold">Gambar Profil:</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    @endif
 
                     <!-- Tombol Edit/Simpan Perubahan -->
                     <div class="form-group row">

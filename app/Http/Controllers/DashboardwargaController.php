@@ -96,7 +96,7 @@ class DashboardwargaController extends Controller
                 if($request->oldImage){
                     Storage::delete($request->oldImage);
                 }
-                $validatedData['image']= $request->file('image')->store('user-image');
+                $validatedData['image']= $request->file('image')->store('post-image');
             }
 
             $user->update($validatedData);

@@ -75,13 +75,12 @@
 
                 <div class="mb-3">
                     <label for="alamat_di_luar_negeri" class="form-label">Alamat di Luar Negeri</label>
-                    <input type="text" class="form-control @error('alamat_di_luar_negeri') is-invalid @enderror" id="alamat_di_luar_negeri" name="alamat_di_luar_negeri" value="{{ old('alamat_di_luar_negeri', $berangkat->alamat_di_luar_negeri) }}">
+                    <textarea class="form-control @error('alamat_di_luar_negeri') is-invalid @enderror" id="alamat_di_luar_negeri" name="alamat_di_luar_negeri" rows="3" required>{{ old('alamat_di_luar_negeri', $berangkat->alamat_di_luar_negeri) }}</textarea>
                     @error('alamat_di_luar_negeri')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
 
                 <div class="mb-3">
                     <label for="status_perkawinan" class="form-label">Status Perkawinan</label>

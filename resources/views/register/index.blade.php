@@ -271,7 +271,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="alamat_lengkap">Alamat Lengkap</label>
+                    <label for="alamat_lengkap">Alamat Lengkap (RT, RW, desa)</label>
                     <input type="text" name="alamat_lengkap" class="form-control @error('alamat_lengkap') is-invalid @enderror" id="alamat_lengkap" placeholder="Alamat Lengkap" required value="{{ old('alamat_lengkap') }}">
                     @error('alamat_lengkap')
                     <div class="invalid-feedback">
@@ -280,8 +280,8 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="kota_kelahiran">Kota Kelahiran</label>
-                    <input type="text" name="kota_kelahiran" class="form-control @error('kota_kelahiran') is-invalid @enderror" id="kota_kelahiran" placeholder="Kota Kelahiran" required value="{{ old('kota_kelahiran') }}">
+                    <label for="kota_kelahiran">tempat kelahiran</label>
+                    <input type="text" name="kota_kelahiran" class="form-control @error('kota_kelahiran') is-invalid @enderror" id="kota_kelahiran" placeholder="tempat kelahiran" required value="{{ old('kota_kelahiran') }}">
                     @error('kota_kelahiran')
                     <div class="invalid-feedback">
                         {{ $message }}

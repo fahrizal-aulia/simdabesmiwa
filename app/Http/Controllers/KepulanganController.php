@@ -45,32 +45,41 @@ class KepulanganController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(request $request)
+    public function store(Request $request)
     {
-        $validatedData= $request->validate([
+        // Validasi data
+        $validatedData = $request->validate([
             'tanggal_kepulangan' => 'required|date',
             'status_perkawinan' => 'required|boolean',
             'alasan_kepulangan' => 'required|string|max:255',
             'pekerjaan' => 'required|string|max:255',
-            'jadwal_kembali' => 'required|date',
+            'jadwal_kembali' => 'nullable|date',
             'no_hp' => 'required|string|max:255',
             'alamat_kepulangan' => 'required|string|max:255',
         ]);
 
+        // Jika checkbox tidak dicentang, set jadwal kembali ke null
+        $jadwalKembali = $request->has('has_jadwal_kembali') ? $request->jadwal_kembali : null;
+
+        // Buat record kepulangan baru
         kepulangan::create([
             'id_user' => auth()->user()->id,
             'id_keberangkatan' => 1, // Atur ini sesuai kebutuhan
-            'tanggal_kepulangan' => $request->tanggal_kepulangan,
-            'status_perkawinan' => $request->status_perkawinan,
-            'alasan_kepulangan' => $request->alasan_kepulangan,
-            'pekerjaan' => $request->pekerjaan,
-            'jadwal_kembali' => $request->jadwal_kembali,
-            'no_hp' => $request->no_hp,
-            'alamat_kepulangan' => $request->alamat_kepulangan,
+            'tanggal_kepulangan' => $validatedData['tanggal_kepulangan'],
+            'status_perkawinan' => $validatedData['status_perkawinan'],
+            'alasan_kepulangan' => $validatedData['alasan_kepulangan'],
+            'pekerjaan' => $validatedData['pekerjaan'],
+            'jadwal_kembali' => $jadwalKembali,
+            'no_hp' => $validatedData['no_hp'],
+            'alamat_kepulangan' => $validatedData['alamat_kepulangan'],
             'status_approve' => false,
         ]);
+
+        // Redirect dengan pesan sukses
         return redirect('/kepulangan')->with('success', 'Data kepulangan berhasil ditambahkan.');
     }
+
+
 
 
     /**
@@ -81,6 +90,7 @@ class KepulanganController extends Controller
 
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
+        $kepulangan->jadwal_kembali = $kepulangan->jadwal_kembali ? Carbon::parse($kepulangan->jadwal_kembali) : null;
 
         // Mengirim data ke view
         return view('warga.kepulangan.show', [
@@ -95,6 +105,7 @@ class KepulanganController extends Controller
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
+        $kepulangan->jadwal_kembali = $kepulangan->jadwal_kembali ? Carbon::parse($kepulangan->jadwal_kembali) : null;
 
         // Mengirim data ke view
         return view('warga.kepulangan.edit', [
@@ -114,27 +125,32 @@ class KepulanganController extends Controller
             'tanggal_kepulangan' => 'required|date',
             'status_perkawinan' => 'required|boolean',
             'pekerjaan' => 'required|string|max:255',
-            'jadwal_kembali' => 'required|date',
+            'jadwal_kembali' => 'nullable|date',
             'no_hp' => 'required|string|max:255',
             'status_approve' => 'required|boolean', // Pastikan untuk validasi boolean
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            // 'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ];
 
         // Validasi data request
         $validatedData = $request->validate($rules);
+         // Jika checkbox tidak dicentang, set jadwal kembali ke null
+        if (!$request->has('jadwal_kembali')) {
+            $validatedData['jadwal_kembali'] = null;
+        }
+
 
         // Debugging: Cek data yang tervalidasi
         Log::info('Validated Data:', $validatedData);
 
         // Proses upload gambar jika ada
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
-            if ($kepulangan->image && Storage::exists($kepulangan->image)) {
-                Storage::delete($kepulangan->image);
-            }
-            // Simpan gambar baru
-            $validatedData['image'] = $request->file('image')->store('kepulangan-images');
-        }
+        // if ($request->hasFile('image')) {
+        //     // Hapus gambar lama jika ada
+        //     if ($kepulangan->image && Storage::exists($kepulangan->image)) {
+        //         Storage::delete($kepulangan->image);
+        //     }
+        //     // Simpan gambar baru
+        //     $validatedData['image'] = $request->file('image')->store('post-image');
+        // }
 
         // Update data kepulangan
         $kepulangan->update($validatedData);

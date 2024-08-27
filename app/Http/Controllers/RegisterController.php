@@ -56,11 +56,8 @@ class RegisterController extends Controller
             $validatedData['password'] = Hash::make($request->input('password'));
         }
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imagePath = $image->store('images', 'public'); // Store image in public disk
-            $validatedData['image'] = $imagePath;
+        if ($request->file('image')) {
+            $validatedData['image']= $request->file('image')->store('post-image');
         }
 
         // Try to create user

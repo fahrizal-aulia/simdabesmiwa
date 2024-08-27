@@ -30,28 +30,40 @@
                 </select>
             </div>
 
+            <!-- Checkbox untuk Jadwal Kembali -->
             <div class="form-group">
+                <label for="has_jadwal_kembali">
+                    <input type="checkbox" id="has_jadwal_kembali" name="has_jadwal_kembali">
+                    Saya akan kembali ke luar negeri
+                </label>
+            </div>
+
+            <!-- Jadwal Kembali (nullable) -->
+            <div class="form-group" id="jadwal_kembali_container" style="display: none;">
                 <label for="jadwal_kembali">Jadwal Kembali Keluar Negeri:</label>
-                <input type="date" class="form-control" id="jadwal_kembali" name="jadwal_kembali" required>
+                <input type="date" class="form-control" id="jadwal_kembali" name="jadwal_kembali">
             </div>
+
             <div class="form-group">
-                <label for="no_hp">Nomer Hp aktif:</label>
-                <textarea class="form-control" id="no_hp" name="no_hp" rows="3" required></textarea>
+                <label for="no_hp">Nomer HP aktif:</label>
+                <input type="text" class="form-control" id="no_hp" name="no_hp" required>
             </div>
+
             <div class="form-group">
-                <label for="pekerjaan">Pekerjaan</label>
-                <textarea class="form-control" id="pekerjaan" name="pekerjaan" rows="3" required></textarea>
+                <label for="pekerjaan">Pekerjaan:</label>
+                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" required>
             </div>
+
             <!-- Alasan Kepulangan -->
             <div class="form-group">
                 <label for="alasan_kepulangan">Alasan Kepulangan:</label>
-                <textarea class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" rows="3" required></textarea>
+                <input type="text" class="form-control" id="alasan_kepulangan" name="alasan_kepulangan" required>
             </div>
 
             <!-- Alamat Kepulangan -->
             <div class="form-group">
                 <label for="alamat_kepulangan">Alamat Kepulangan:</label>
-                <input type="text" class="form-control" id="alamat_kepulangan" name="alamat_kepulangan" required>
+                <textarea class="form-control" id="alamat_kepulangan" name="alamat_kepulangan" rows="3" required></textarea>
             </div>
 
             <br>
@@ -61,6 +73,14 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // JavaScript untuk menampilkan atau menyembunyikan field jadwal kembali berdasarkan checkbox
+        document.getElementById('has_jadwal_kembali').addEventListener('change', function() {
+            const jadwalKembaliContainer = document.getElementById('jadwal_kembali_container');
+            jadwalKembaliContainer.style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
 </body>
 </html>
 

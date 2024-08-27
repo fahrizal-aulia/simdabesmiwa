@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <th><strong>Jadwal Kembali Ke Luar Negeri:</strong></th>
-                    <td>{{ $pulang->tanggal_kembali->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
+                    <td>{{ $pulang->jadwal_kembali->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
                 </tr>
                 <tr>
                     <th><strong>Pekerjaan:</strong></th>
@@ -56,7 +56,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <a href="/dashboard/kepulangan/{{ $pulang->id }}/edit " class="btn btn-warning">Edit</a>
+            <a href="/kepulangan/{{ $pulang->id }}/edit " class="btn btn-warning">Edit</a>
             <a href="{{ url()->previous() }}" class="btn btn-secondary">Kembali</a>
         </div>
     </div>

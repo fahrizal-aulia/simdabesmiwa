@@ -81,7 +81,7 @@ class DashboardkeberangkatanController extends Controller
         'gaji_perbulan' => 'required|numeric',
         'asuransi' => 'required|string|max:255',
         'status_approve' => 'required|boolean', // Pastikan untuk validasi boolean
-        'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        // 'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
     ];
 
     // Validasi data request
@@ -91,14 +91,14 @@ class DashboardkeberangkatanController extends Controller
     Log::info('Validated Data:', $validatedData);
 
     // Proses upload gambar jika ada
-    if ($request->hasFile('image')) {
-        // Hapus gambar lama jika ada
-        if ($keberangkatan->image && Storage::exists($keberangkatan->image)) {
-            Storage::delete($keberangkatan->image);
-        }
-        // Simpan gambar baru
-        $validatedData['image'] = $request->file('image')->store('user-image');
-    }
+    // if ($request->hasFile('image')) {
+    //     // Hapus gambar lama jika ada
+    //     if ($keberangkatan->image && Storage::exists($keberangkatan->image)) {
+    //         Storage::delete($keberangkatan->image);
+    //     }
+    //     // Simpan gambar baru
+    //     $validatedData['image'] = $request->file('image')->store('user-image');
+    // }
 
     // Debugging: Cek data sebelum update
     Log::info('User Data Before Update:', $keberangkatan->toArray());

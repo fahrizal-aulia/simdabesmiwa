@@ -22,9 +22,12 @@ class KeberangkatanController extends Controller
     public function index()
     {
         $keberangkatan = Keberangkatan::with('user')->where('id_user',auth()->user()->id)->get();
+        $users = User::find( auth()->user()->id);
+
         // dd($keberangkatan);
         return view('warga.keberangkatan.index',[
-            'keberangkatan'=> $keberangkatan
+            'keberangkatan'=> $keberangkatan,
+            'user'=>$users
 
             ]);
     }
@@ -109,18 +112,18 @@ class KeberangkatanController extends Controller
         'gaji_perbulan' => 'required|numeric',
         'asuransi' => 'required|string|max:255',
         'status_approve' => 'required|boolean', // Pastikan untuk validasi boolean
-        'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        // 'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
     ];
 
     $validatedData = $request->validate($rules);
 
 
-    if ($request->hasFile('image')) {
-        if ($keberangkatan->image && Storage::exists($keberangkatan->image)) {
-            Storage::delete($keberangkatan->image);
-        }
-        $validatedData['image'] = $request->file('image')->store('user-image');
-    }
+    // if ($request->hasFile('image')) {
+    //     if ($keberangkatan->image && Storage::exists($keberangkatan->image)) {
+    //         Storage::delete($keberangkatan->image);
+    //     }
+    //     $validatedData['image'] = $request->file('image')->store('post-image');
+    // }
 
     $keberangkatan->update($validatedData);
     return redirect('/keberangkatan')->with('success', 'Data keberangkatan Updated!');

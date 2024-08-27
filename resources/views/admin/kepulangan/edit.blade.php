@@ -16,6 +16,7 @@
                 @csrf
                 @method('PUT')
 
+                <!-- Existing fields -->
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
                     <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{ old('nik', $pulang->user ? $pulang->user->nik : '') }}" disabled>
@@ -67,10 +68,42 @@
                 <div class="mb-3">
                     <label for="status_perkawinan" class="form-label">Status Perkawinan</label>
                     <select class="form-select @error('status_perkawinan') is-invalid @enderror" id="status_perkawinan" name="status_perkawinan">
-                        <option value="1" {{ old('status_perkawinan', $pulang->status_perkawinan) ? 'selected' : '' }}>Menikah</option>
+                        <option value="1" {{ old('status_perkawinan', $pulang->status_perkawinan) == '1' ? 'selected' : '' }}>Menikah</option>
                         <option value="0" {{ old('status_perkawinan', $pulang->status_perkawinan) == '0' ? 'selected' : '' }}>Belum Menikah</option>
                     </select>
                     @error('status_perkawinan')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <!-- New fields -->
+                <div class="mb-3">
+                    <label for="jadwal_kembali" class="form-label">Jadwal Kembali Ke Luar Negeri</label>
+                    <input type="checkbox" id="jadwal_kembali_checkbox" {{ old('jadwal_kembali', $pulang->jadwal_kembali) ? 'checked' : '' }}> Ada Jadwal Kembali
+                    <input type="date" class="form-control @error('jadwal_kembali') is-invalid @enderror" id="jadwal_kembali" name="jadwal_kembali" value="{{ old('jadwal_kembali', $pulang->jadwal_kembali ? $pulang->jadwal_kembali->format('Y-m-d') : '') }}" {{ old('jadwal_kembali') ? '' : 'disabled' }}>
+                    @error('jadwal_kembali')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" id="pekerjaan" name="pekerjaan" value="{{ old('pekerjaan', $pulang->pekerjaan) }}">
+                    @error('pekerjaan')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="no_hp" class="form-label">Nomor HP/WA Aktif</label>
+                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" value="{{ old('no_hp', $pulang->no_hp) }}">
+                    @error('no_hp')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -90,4 +123,21 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkbox = document.getElementById('jadwal_kembali_checkbox');
+        const dateInput = document.getElementById('jadwal_kembali');
+
+        // Function to toggle the date input based on checkbox status
+        function toggleDateInput() {
+            dateInput.disabled = !checkbox.checked;
+        }
+
+        // Initial check
+        toggleDateInput();
+
+        // Add event listener to checkbox
+        checkbox.addEventListener('change', toggleDateInput);
+    });
+</script>
 @endsection

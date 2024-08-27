@@ -70,9 +70,9 @@
                     @enderror
                 </div>
 
-                <!-- Kota Kelahiran -->
+                <!-- tempat kelahiran -->
                 <div class="mb-3">
-                    <label for="kota_kelahiran" class="form-label">Kota Kelahiran</label>
+                    <label for="kota_kelahiran" class="form-label">tempat kelahiran</label>
                     <input type="text" class="form-control @error('kota_kelahiran') is-invalid @enderror" id="kota_kelahiran" name="kota_kelahiran" value="{{ old('kota_kelahiran', $user->kota_kelahiran) }}" required>
                     @error('kota_kelahiran')
                         <div class="invalid-feedback">
@@ -163,7 +163,7 @@
 
                 <!-- Alamat Lengkap -->
                 <div class="mb-3">
-                    <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
+                    <label for="alamat_lengkap" class="form-label">Alamat Lengkap (RT, RW, desa)</label>
                     <textarea class="form-control @error('alamat_lengkap') is-invalid @enderror" id="alamat_lengkap" name="alamat_lengkap" rows="3" required>{{ old('alamat_lengkap', $user->alamat_lengkap) }}</textarea>
                     @error('alamat_lengkap')
                         <div class="invalid-feedback">

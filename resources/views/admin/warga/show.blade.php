@@ -22,7 +22,7 @@
                     <td>{{ $user->nama }}</td>
                 </tr>
                 <tr>
-                    <th><strong>Alamat Lengkap:</strong></th>
+                    <th><strong>Alamat Lengkap (RT, RW, desa):</strong></th>
                     <td>
                         {{ $user->alamat_lengkap }}
                         {{-- Jika ingin menambahkan detail alamat, uncomment bagian berikut --}}

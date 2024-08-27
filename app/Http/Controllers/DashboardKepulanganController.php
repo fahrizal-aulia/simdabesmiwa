@@ -70,7 +70,7 @@ class DashboardKepulanganController extends Controller
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
-        $kepulangan->tanggal_kembali = Carbon::parse($kepulangan->tanggal_kembali);
+        $kepulangan->jadwal_kembali = $kepulangan->jadwal_kembali ? Carbon::parse($kepulangan->jadwal_kembali) : null;
 
         // Mengirim data ke view
         return view('admin.kepulangan.show', [
@@ -85,7 +85,7 @@ class DashboardKepulanganController extends Controller
     {
         // Format tanggal kepulangan
         $kepulangan->tanggal_kepulangan = Carbon::parse($kepulangan->tanggal_kepulangan);
-        $kepulangan->tanggal_kembali = Carbon::parse($kepulangan->tanggal_kembali);
+        $kepulangan->jadwal_kembali = $kepulangan->jadwal_kembali ? Carbon::parse($kepulangan->jadwal_kembali) : null;
 
         // Mengirim data ke view
         return view('admin.kepulangan.edit', [
@@ -96,43 +96,40 @@ class DashboardKepulanganController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(request $request, kepulangan $kepulangan)
-    {
-        // Mendefinisikan aturan validasi
-        $rules = [
-            'alasan_kepulangan' => 'required|string|max:255',
-            'alamat_kepulangan' => 'required|string|max:255',
-            'tanggal_kepulangan' => 'required|date',
-            'status_perkawinan' => 'required|boolean',
-            'status_approve' => 'required|boolean', // Pastikan untuk validasi boolean
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        ];
+    public function update(Request $request, kepulangan $kepulangan)
+{
+    // Mendefinisikan aturan validasi
+    $rules = [
+        'alasan_kepulangan' => 'required|string|max:255',
+        'alamat_kepulangan' => 'required|string|max:255',
+        'tanggal_kepulangan' => 'required|date',
+        'status_perkawinan' => 'required|boolean',
+        'pekerjaan' => 'required|string|max:255',
+        'jadwal_kembali' => 'nullable|date',
+        'no_hp' => 'required|string|max:255',
+        'status_approve' => 'required|boolean',
+    ];
 
-        // Validasi data request
-        $validatedData = $request->validate($rules);
+    // Validasi data request
+    $validatedData = $request->validate($rules);
 
-        // Debugging: Cek data yang tervalidasi
-        Log::info('Validated Data:', $validatedData);
-
-        // Proses upload gambar jika ada
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
-            if ($kepulangan->image && Storage::exists($kepulangan->image)) {
-                Storage::delete($kepulangan->image);
-            }
-            // Simpan gambar baru
-            $validatedData['image'] = $request->file('image')->store('kepulangan-images');
-        }
-
-        // Update data kepulangan
-        $kepulangan->update($validatedData);
-
-        // Debugging: Cek data setelah update
-        Log::info('Kepulangan Data After Update:', $kepulangan->fresh()->toArray());
-
-        // Redirect dengan pesan sukses
-        return redirect('/dashboard/kepulangan')->with('success', 'Data kepulangan telah diperbarui!');
+    // Jika checkbox tidak dicentang, set jadwal kembali ke null
+    if (!$request->has('jadwal_kembali')) {
+        $validatedData['jadwal_kembali'] = null;
     }
+
+    // Debugging: Cek data yang tervalidasi
+    Log::info('Validated Data:', $validatedData);
+
+    // Update data kepulangan
+    $kepulangan->update($validatedData);
+
+    // Debugging: Cek data setelah update
+    Log::info('Kepulangan Data After Update:', $kepulangan->fresh()->toArray());
+
+    // Redirect dengan pesan sukses
+    return redirect('/dashboard/kepulangan')->with('success', 'Data kepulangan telah diperbarui!');
+}
 
     /**
      * Remove the specified resource from storage.
