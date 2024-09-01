@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <th><strong>Jadwal Kembali Ke Luar Negeri:</strong></th>
-                    <td>{{ $pulang->jadwal_kembali->format('d M Y') }}</td> <!-- Format tanggal sesuai kebutuhan -->
+                    <td>{{  $pulang->jadwal_kembali ? $pulang->jadwal_kembali->format('d M Y') : '-' }}</td> <!-- Format tanggal sesuai kebutuhan -->
                 </tr>
                 <tr>
                     <th><strong>Pekerjaan:</strong></th>

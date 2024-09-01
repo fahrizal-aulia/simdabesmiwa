@@ -17,6 +17,9 @@ use App\Http\Controllers\DashboardpendaftaranController;
 use App\Http\Controllers\DashboardkeberangkatanController;
 
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +61,8 @@ Route::middleware(['auth', 'check.role:1'])->group(function () {
     Route::resource('/kepulangan', KepulanganController::class);
     // Rute untuk menampilkan dan mengupdate profil
     Route::match(['get', 'post'], '/profile', [ProfileController::class, 'edit'])->name('profile');
+    Route::get('/get-kecamatan-by-kota/{id}', [ProfileController::class, 'getKecamatanByKota']);
+
 });
 
 
@@ -65,9 +70,13 @@ Route::middleware(['auth', 'check.role:2'])->group(function () {
 
     //dashboard admin
     Route::get('/dashboard', function () {
-        $hitungUser = User::where('status_approve', 0)->count();
-        $hitungkeberangkatan = keberangkatan::count();
-        $hitungkepulangan = kepulangan::count();
+        $hitungUser = User::where('status_approve', 0)->where('id_kota', auth()->user()->id_kota)->count();
+        $hitungkeberangkatan = keberangkatan::whereHas('user', function($query) {
+    $query->where('id_kota', auth()->user()->id_kota);
+})->count();
+        $hitungkepulangan = kepulangan::whereHas('user', function($query) {
+    $query->where('id_kota', auth()->user()->id_kota);
+})->count();
         return view('admin.dashboard', [
             'title' => 'admin',
             'hitung_user' => $hitungUser,

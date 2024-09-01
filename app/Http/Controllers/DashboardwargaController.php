@@ -76,7 +76,7 @@ class DashboardwargaController extends Controller
             'tanggal_lahir' => 'required|date',
             'pekerjaan' => 'required|string|max:255',
             'status_perkawinan' => 'required|boolean',
-            'pendapatan_perbulan' => 'required|numeric',
+            'pendapatan_perbulan' => 'required|numeric|max:100000000000',
             'nomer_telfon' => 'required|numeric',
             'pendidikan_terakhir' => 'required|string|max:255',
             'tanggungan' => 'required|numeric',

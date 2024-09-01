@@ -27,7 +27,7 @@
                     <tr>
                         <td> {{ $user->nik }}</td>
                         <td> {{ $user->nama }}</td>
-                        <td>{{ $user->status_perkawinan }}</td>
+                        <td>{{ $user->status_perkawinan ? 'Menikah' : 'Belum Menikah' }}</td>
                         <td>{{ $user->jenis_kelamin }}</td>
                         <td>{{ $user->pendidikan_terakhir }}</td>
                         <td>{{ $user->tanggungan }}</td>

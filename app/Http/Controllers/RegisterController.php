@@ -36,7 +36,7 @@ class RegisterController extends Controller
             'jenis_kelamin' => 'required',
             'pekerjaan' => 'required|max:255',
             'status_perkawinan' => 'required',
-            'pendapatan_perbulan' => 'required',
+            'pendapatan_perbulan' => 'required|numeric|max:100000000000',
             'nama' => 'required|max:255',
             'nomer_telfon' => 'required',
             'tanggal_lahir' => 'required|date',

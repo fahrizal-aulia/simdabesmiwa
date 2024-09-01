@@ -280,7 +280,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="kota_kelahiran">tempat kelahiran</label>
+                    <label for="kota_kelahiran">Tempat Kelahiran</label>
                     <input type="text" name="kota_kelahiran" class="form-control @error('kota_kelahiran') is-invalid @enderror" id="kota_kelahiran" placeholder="tempat kelahiran" required value="{{ old('kota_kelahiran') }}">
                     @error('kota_kelahiran')
                     <div class="invalid-feedback">

@@ -76,9 +76,9 @@ class DashboardkeberangkatanController extends Controller
         'jenis_pekerjaan' => 'required|string|max:255',
         'alamat_di_luar_negeri' => 'required|string|max:255',
         'status_perkawinan' => 'required|boolean',
-        'biaya_pemberangkatan' => 'required|numeric',
-        'masa_kontrak' => 'required|numeric',
-        'gaji_perbulan' => 'required|numeric',
+        'biaya_pemberangkatan' => 'required|numeric|max:100000000000',
+        'masa_kontrak' => 'required|integer',
+        'gaji_perbulan' => 'required|numeric|max:100000000000',
         'asuransi' => 'required|string|max:255',
         'status_approve' => 'required|boolean', // Pastikan untuk validasi boolean
         // 'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
