@@ -46,7 +46,7 @@
             </div>
 
             <!-- Informasi Profil -->
-            <div class="col-md-9">
+            <div class="col-md-9 mt-3">
                 <form method="POST" action="{{ route('profile') }}" enctype="multipart/form-data" onsubmit="return confirmUpdate()">
                     @csrf
 
@@ -279,9 +279,10 @@
                     @endif
 
                     <div class="form-group row">
-                        <div class="col-sm-8 offset-sm-4">
+                        <div class="col-sm-8 offset-sm-4 mt-3">
                             @if(request()->has('edit'))
                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                <a href="/profile" class="btn btn-danger">Batal Perubahan</a>
                             @else
                                 <a href="{{ route('profile', ['edit' => 'true']) }}" class="btn btn-secondary">Edit Profil</a>
                             @endif

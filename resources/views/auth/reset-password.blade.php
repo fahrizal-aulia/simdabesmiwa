@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel='icon' type='image/png' href='image/favicon.png'>
+    <title>Reset Password</title>
+    <link rel='icon' type='image/png' href='{{ asset('image/favicon.png') }}'>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -24,6 +24,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             overflow: hidden;
+            position: relative;
         }
         .logo-section {
             width: 40%;
@@ -43,7 +44,7 @@
         .logo-section img:hover {
             transform: scale(1.1);
         }
-        .login-section {
+        .reset-section {
             width: 60%;
             padding: 40px;
             background: #ffffff;
@@ -51,12 +52,12 @@
             flex-direction: column;
             justify-content: center;
         }
-        .login-section h2 {
+        .reset-section h2 {
             margin: 0;
             font-size: 28px;
             color: #333;
         }
-        .login-section p {
+        .reset-section p {
             margin: 10px 0 30px;
             color: #666;
             font-size: 16px;
@@ -99,17 +100,17 @@
             background-color: #0056b3;
             transform: translateY(-2px);
         }
-        .register-link {
+        .login-link {
             text-align: center;
             margin-top: 20px;
         }
-        .register-link a {
+        .login-link a {
             color: #007bff;
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
         }
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
         .alert {
@@ -138,53 +139,72 @@
 </head>
 <body>
     <div class="container">
-        @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        <!-- Alert Messages -->
+        @if (session()->has('status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
-        @if (session()->has('loginError'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('loginError') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
+        <!-- Logo Section -->
         <div class="logo-section">
             <img src="{{ asset('image/uwp.png') }}" alt="Logo 1">
             <img src="{{ asset('image/kemendikbud.png') }}" alt="Logo 2">
         </div>
 
-        <div class="login-section">
-            <h2>Login Ke Akun Anda</h2>
-            <p>Masukan Detail Login Anda.</p>
-            <form action="/login" method="post">
+        <!-- Reset Password Section -->
+        <div class="reset-section">
+            <h2>Reset Password Anda</h2>
+            <p>Masukkan informasi berikut untuk mereset password Anda.</p>
+            <form action="{{ route('password.update') }}" method="POST">
                 @csrf
+                <!-- Hidden Token Field -->
+                <input type="hidden" name="token" value="{{ $token }}">
+
+                <!-- NIK Field -->
                 <div class="form-group">
-                    <label for="nik">Masukan NIK/Code</label>
-                    <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror"
-                    id="nik" placeholder="nik" autofocus required value="{{ old('nik') }}">
+                    <label for="nik">NIK</label>
+                    <input type="text" name="nik" id="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukkan NIK Anda" value="{{ old('nik') }}" required autofocus>
                     @error('nik')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
                     @enderror
                 </div>
 
+                <!-- New Password Field -->
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                    <label for="password">Password Baru</label>
+                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password Baru" required>
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
-                <button type="submit" class="btn">Login</button>
+
+                <!-- Confirm Password Field -->
+                <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Konfirmasi Password Baru" required>
+                </div>
+
+                <button type="submit" class="btn">Reset Password</button>
             </form>
-            <br>
-            <div class="forgot-password-link mx-2">
-                <a href="/forgot-password">Lupa Password?</a>
-            </div>
-            <div class="register-link">
-                <p>Buat Akun PMI? <a href="/register">Daftar Disini</a></p>
+            <div class="login-link">
+                <p>Kembali ke <a href="/login">Login</a></p>
             </div>
         </div>
     </div>

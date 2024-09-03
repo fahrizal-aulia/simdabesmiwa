@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_kecamatan');
             $table->bigInteger('nik')->unique();
             $table->string('nama');
+            $table->string('email')->unique();
             $table->string('jenis_kelamin');
             $table->string('kota_kelahiran');
             $table->date('tanggal_lahir');

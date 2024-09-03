@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Reset Password</title>
     <link rel='icon' type='image/png' href='image/favicon.png'>
     <style>
         body {
@@ -138,16 +138,16 @@
 </head>
 <body>
     <div class="container">
-        @if (session()->has('success'))
+        @if (session()->has('status'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
+            {{ session('status') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
 
-        @if (session()->has('loginError'))
+        @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('loginError') }}
+            {{ session('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
@@ -158,10 +158,20 @@
         </div>
 
         <div class="login-section">
-            <h2>Login Ke Akun Anda</h2>
-            <p>Masukan Detail Login Anda.</p>
-            <form action="/login" method="post">
+            <h2>Reset Password</h2>
+            <p>Masukan email Anda untuk mereset password.</p>
+            <form action="/forgot-password/reset" method="post">
                 @csrf
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                    id="email" placeholder="Enter your email" autofocus required value="{{ old('email') }}">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
                 <div class="form-group">
                     <label for="nik">Masukan NIK/Code</label>
                     <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror"
@@ -172,19 +182,10 @@
                     </div>
                     @enderror
                 </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password">
-                </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Send Reset Link</button>
             </form>
-            <br>
-            <div class="forgot-password-link mx-2">
-                <a href="/forgot-password">Lupa Password?</a>
-            </div>
             <div class="register-link">
-                <p>Buat Akun PMI? <a href="/register">Daftar Disini</a></p>
+                <p>Ingat Password Anda? <a href="/login">Login Disini</a></p>
             </div>
         </div>
     </div>
