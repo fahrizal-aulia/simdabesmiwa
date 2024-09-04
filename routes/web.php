@@ -41,19 +41,13 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/confirmation', [RegisterController::class, 'confirmation'])->middleware('guest');
 Route::get('/get-kecamatan-by-kota/{id}', [RegisterController::class, 'getKecamatanByKota']);
 
+
+// reset password
 Route::get('/forgot-password', [forgotPasswordController::class, 'index']);
-// Route::post('/forgot-password/reset', [forgotPasswordController::class, 'forgot']);
-// Menampilkan form request reset password
-// Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-
-// Memproses pengiriman email reset password
 Route::post('/forgot-password/reset', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-
-// Menampilkan form reset password
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
-
-// Memproses reset password
 Route::post('reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
+Route::get('/email-reset', [ForgotPasswordController::class, 'test']);
 
 
 

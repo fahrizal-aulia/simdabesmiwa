@@ -26,14 +26,12 @@ class forgotPasswordController extends Controller
                 'email' => 'required|email|exists:users,email'
             ]);
 
-            // Pastikan NIK dan email cocok dengan user
             $user = User::where('nik', $request->nik)->where('email', $request->email)->first();
 
             if (!$user) {
                 return back()->withErrors(['email' => 'NIK dan Email tidak cocok dengan data kami.']);
             }
 
-            // Mengirim reset link menggunakan email yang terdaftar
             $status = Password::sendResetLink(
                 ['email' => $user->email]
             );
@@ -56,7 +54,6 @@ class forgotPasswordController extends Controller
         ]);
     }
 
-    // Memproses reset password
     public function reset(Request $request)
     {
         $request->validate([
@@ -65,9 +62,8 @@ class forgotPasswordController extends Controller
             'token' => 'required'
         ]);
 
-        $user = \App\Models\User::where('nik', $request->nik)->first();
+        $user = User::where('nik', $request->nik)->first();
 
-        // Reset password menggunakan token
         $status = Password::reset(
             [
                 'email' => $user->email,
@@ -77,7 +73,6 @@ class forgotPasswordController extends Controller
             ],
             function ($user, $password) {
                 $user->password = Hash::make($password);
-                $user->setRememberToken(Str::random(60));
                 $user->save();
             }
         );
@@ -85,5 +80,13 @@ class forgotPasswordController extends Controller
         return $status === Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('success', __($status))
                     : back()->withErrors(['nik' => [__($status)]]);
+    }
+
+    public function test()
+    {
+        $user = User::find(4);
+        return View ('auth.email-reset',[
+            'user'=> $user
+        ]);
     }
 }
