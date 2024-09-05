@@ -37,9 +37,9 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('/confirmation', [RegisterController::class, 'confirmation'])->middleware('guest');
-Route::get('/get-kecamatan-by-kota/{id}', [RegisterController::class, 'getKecamatanByKota']);
+Route::get('/registerget-kecamatan-by-kota/{id}', [RegisterController::class, 'registergetKecamatanByKota']);
 
 
 // reset password
@@ -47,7 +47,7 @@ Route::get('/forgot-password', [forgotPasswordController::class, 'index']);
 Route::post('/forgot-password/reset', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
-Route::get('/email-reset', [ForgotPasswordController::class, 'test']);
+// Route::get('/email-reset', [ForgotPasswordController::class, 'test']);
 
 
 

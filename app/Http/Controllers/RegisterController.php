@@ -76,7 +76,7 @@ class RegisterController extends Controller
         return view('register.confirmation');
     }
 
-    public function getKecamatanByKota($id)
+    public function registergetKecamatanByKota($id)
     {
         Log::info('Fetching kecamatan for kota id:', ['id' => $id]);
 

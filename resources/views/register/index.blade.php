@@ -376,7 +376,7 @@
 
                 if (kotaId) {
                     $.ajax({
-                        url: '/get-kecamatan-by-kota/' + kotaId,
+                        url: '/registerget-kecamatan-by-kota/' + kotaId,
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {

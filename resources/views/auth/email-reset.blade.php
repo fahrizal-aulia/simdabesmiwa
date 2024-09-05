@@ -35,23 +35,23 @@
         .content {
             padding: 30px;
             text-align: left;
-            color: #333;
+            color: #333333; /* Dark color for better readability */
         }
         .content h1 {
             font-size: 24px;
-            color: #333;
+            color: #333333; /* Ensuring dark color */
             margin-bottom: 20px;
         }
         .content p {
             font-size: 16px;
             margin-bottom: 30px;
-            color: #666;
+            color: #666666; /* Gray color for secondary text */
         }
         .btn {
             display: inline-block;
             padding: 12px 20px;
             background-color: #007bff;
-            color: #ffffff;
+            color: #ffffff !important; /* Ensure white text color for readability */
             border-radius: 6px;
             text-align: center;
             text-decoration: none;
@@ -63,7 +63,7 @@
         .footer {
             text-align: center;
             padding: 20px;
-            color: #777;
+            color: #777777; /* Light gray for footer text */
             font-size: 14px;
         }
         .footer a {
@@ -86,11 +86,11 @@
             <p>Hello, {{ $user->nama }}</p>
             <p>Kami menerima permintaan untuk mereset password akun Anda. Jika Anda tidak meminta penggantian password, abaikan email ini.</p>
             <p>Untuk mereset password Anda, silakan klik tombol di bawah ini:</p>
-            <a href="{{$url}}" class="btn">Reset Password</a>
+            <a href="{{ $url }}" class="btn" style="color: #ffffff !important;">Reset Password</a> <!-- Ensuring white text on button -->
         </div>
         <div class="footer">
-            <p>Jika Anda mengalami masalah, salin dan tempelkan URL berikut di browser Anda: {{$url}}</p>
-            <p>Copyright © {{ date('Y') }}. All rights reserved.</p>
+            <p>Jika Anda mengalami masalah, salin dan tempelkan URL berikut di browser Anda: <a href="{{ $url }}">{{ $url }}</a></p>
+            <p>&copy; {{ date('Y') }}. All rights reserved.</p>
         </div>
     </div>
 </body>
