@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\kota;
 use App\Models\kecamatan;
 use Illuminate\Http\Request;
