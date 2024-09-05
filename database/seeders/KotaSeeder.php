@@ -14,9 +14,9 @@ class KotaSeeder extends Seeder
     public function run(): void
     {
         DB::table('kota')->insert([
-            ['nama_kota' => 'blitar'],
+            ['nama_kota' => 'Blitar'],
             // ['nama_kota' => 'trenggalek'],
-            ['nama_kota' => 'tulungagung'],
+            ['nama_kota' => 'Tulungagung'],
         ]);
     }
 }

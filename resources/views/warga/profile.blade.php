@@ -58,6 +58,12 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label font-weight-bold">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control @if(request()->has('edit')) @else readonly-input @endif" id="email" name="email" value="{{ old('email', $user->email) }}" @if(!request()->has('edit')) readonly @endif>
+                        </div>
+                    </div>
                     <!-- Nama Lengkap -->
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label font-weight-bold">Nama Lengkap:</label>

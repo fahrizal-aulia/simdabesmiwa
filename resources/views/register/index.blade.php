@@ -317,7 +317,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="pendapatan_perbulan">Pendapatan Perbulan</label>
+                    <label for="pendapatan_perbulan">Pendapatan Perbulan (IDR)</label>
                     <input type="number" name="pendapatan_perbulan" class="form-control @error('pendapatan_perbulan') is-invalid @enderror" id="pendapatan_perbulan" placeholder="Pendapatan Perbulan" required value="{{ old('pendapatan_perbulan') }}">
                     @error('pendapatan_perbulan')
                     <div class="invalid-feedback">
@@ -339,6 +339,16 @@
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" required>
                     <div id="password-error" class="invalid-feedback" style="display: none;"></div>
                     @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-floating">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                        id="email" placeholder="name@example.com" required value="{{ old('email') }}">
+                    <label for="email">Email address</label>
+                    @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -397,7 +407,6 @@
     </script>
     <script>
         $(document).ready(function() {
-            // Function to check the length of NIK
             $('#nik').on('input', function() {
                 var nik = $(this).val();
                 var nikError = $('#nik-error');
@@ -412,7 +421,6 @@
                 }
             });
 
-            // Function to check the length of Password
             $('#password').on('input', function() {
                 var password = $(this).val();
                 var passwordError = $('#password-error');

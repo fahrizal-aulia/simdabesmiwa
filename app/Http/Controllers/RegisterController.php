@@ -46,7 +46,8 @@ class RegisterController extends Controller
             'alamat_lengkap' => 'required|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'status_approve' => 'required|integer',
-            'password' => ['required', 'min:8', 'max:255']
+            'password' => ['required', 'min:8', 'max:255'],
+            'email'=>['required','email:dns','unique:users'],
         ]);
 
         Log::info('Validated data:', $validatedData);

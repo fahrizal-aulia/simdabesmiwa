@@ -74,7 +74,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th><strong>Biaya Pemberangkatan:</strong></th>
+                                <th><strong>Biaya Pemberangkatan (IDR):</strong></th>
                                 <td>{{ number_format($berangkat->biaya_pemberangkatan, 0, ',', '.') }}</td> <!-- Format angka sesuai kebutuhan -->
                             </tr>
                             <tr>
@@ -82,7 +82,7 @@
                                 <td>{{ $berangkat->masa_kontrak }}</td>
                             </tr>
                             <tr>
-                                <th><strong>Gaji Per Bulan:</strong></th>
+                                <th><strong>Gaji Per Bulan (IDR):</strong></th>
                                 <td>{{ number_format($berangkat->gaji_perbulan, 0, ',', '.') }}</td> <!-- Format angka sesuai kebutuhan -->
                             </tr>
                             <tr>

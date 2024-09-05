@@ -88,7 +88,10 @@ class DashboardwargaController extends Controller
 
 
             if ($request->nik != $user->nik) {
-                $rules['nik'] = 'required|unique:users,nik'.$user->nik;
+                $rules['nik'] = 'required|unique:users,nik';
+            }
+            if ($request->email != $user->email) {
+                $rules['email'] = 'required|email:dns|unique:users,email';
             }
             $validatedData= $request-> validate($rules);
 
@@ -115,6 +118,19 @@ class DashboardwargaController extends Controller
         user::destroy($user->id);
 
         return redirect('/dashboard/warga')->with('success','warga Has Been Deleted!');
+    }
+    public function getKecamatanByKota($id)
+    {
+        Log::info('Fetching kecamatan for kota id:', ['id' => $id]);
+
+        try {
+            // Retrieve kecamatan based on kota id
+            $kecamatan = Kecamatan::where('id_kota', $id)->get();
+            return response()->json($kecamatan);
+        } catch (\Exception $e) {
+            Log::error('Error fetching kecamatan:', ['exception' => $e]);
+            return response()->json(['error' => 'Failed to fetch kecamatan'], 500);
+        }
     }
 
 }

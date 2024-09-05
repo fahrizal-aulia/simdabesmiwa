@@ -51,7 +51,10 @@ class ProfileController extends Controller
                 ];
 
                 if ($request->nik != $user->nik) {
-                    $rules['nik'] = 'required|unique:users,nik'.$user->nik;
+                    $rules['nik'] = 'required|unique:users,nik';
+                }
+                if ($request->email != $user->email) {
+                    $rules['email'] = 'required|email:dns|unique:users,email';
                 }
 
                 $request->validate($rules);
@@ -65,6 +68,7 @@ class ProfileController extends Controller
                     'status_perkawinan' => $request->status_perkawinan,
                     'pendapatan_perbulan' => $request->pendapatan_perbulan,
                     'nama' => $request->nama,
+                    'email' => $request->email,
                     'nomer_telfon' => $request->nomer_telfon,
                     'tanggal_lahir' => $request->tanggal_lahir,
                     'kota_kelahiran' => $request->kota_kelahiran,

@@ -23,7 +23,7 @@ class forgotPasswordController extends Controller
         {
             $request->validate([
                 'nik' => 'required|exists:users,nik',
-                'email' => 'required|email|exists:users,email'
+                'email' => 'required|email:dns|exists:users,email'
             ]);
 
             $user = User::where('nik', $request->nik)->where('email', $request->email)->first();

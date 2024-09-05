@@ -97,6 +97,9 @@ Route::middleware(['auth', 'check.role:2'])->group(function () {
     Route::PUT('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'update'])->name('pendaftar.update')->middleware('auth');
     Route::resource('/dashboard/pendaftar', DashboardpendaftaranController::class)->middleware('auth');
     Route::delete('/dashboard/pendaftar/{user}', [DashboardpendaftaranController::class, 'destroy'])->middleware('auth');
+    Route::get('/adminget-kecamatan-by-kota/{id}', [DashboardpendaftaranController::class, 'getKecamatanByKota']);
+    Route::get('/warget-kecamatan-by-kota/{id}', [DashboardwargaController::class, 'getKecamatanByKota']);
+
 
     // dashboard admin warga
     Route::resource('/dashboard/warga', DashboardwargaController::class)->parameters(['warga' => 'user'])->middleware('auth');

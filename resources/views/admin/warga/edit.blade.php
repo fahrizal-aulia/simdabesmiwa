@@ -25,6 +25,17 @@
                     @enderror
                 </div>
 
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
                 <!-- Nama Lengkap -->
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Lengkap</label>
@@ -139,7 +150,7 @@
 
                 <!-- Pendapatan Perbulan -->
                 <div class="mb-3">
-                    <label for="pendapatan_perbulan" class="form-label">Pendapatan Perbulan</label>
+                    <label for="pendapatan_perbulan" class="form-label">Pendapatan Perbulan (IDR)</label>
                     <input type="number" class="form-control @error('pendapatan_perbulan') is-invalid @enderror" id="pendapatan_perbulan" name="pendapatan_perbulan" value="{{ old('pendapatan_perbulan', $user->pendapatan_perbulan) }}">
                     @error('pendapatan_perbulan')
                         <div class="invalid-feedback">
@@ -210,7 +221,7 @@
 
             if (kotaId) {
                 $.ajax({
-                    url: '/get-kecamatan-by-kota/' + kotaId,
+                    url: '/warget-kecamatan-by-kota/' + kotaId,
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {

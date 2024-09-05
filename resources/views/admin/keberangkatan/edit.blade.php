@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="biaya_pemberangkatan" class="form-label">Biaya Pemberangkatan</label>
+                    <label for="biaya_pemberangkatan" class="form-label">Biaya Pemberangkatan (IDR)</label>
                     <input type="number" class="form-control @error('biaya_pemberangkatan') is-invalid @enderror" id="biaya_pemberangkatan" name="biaya_pemberangkatan" value="{{ old('biaya_pemberangkatan', $berangkat->biaya_pemberangkatan) }}">
                     @error('biaya_pemberangkatan')
                         <div class="invalid-feedback">
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="gaji_perbulan" class="form-label">Gaji Per Bulan</label>
+                    <label for="gaji_perbulan" class="form-label">Gaji Per Bulan (IDR)</label>
                     <input type="number" class="form-control @error('gaji_perbulan') is-invalid @enderror" id="gaji_perbulan" name="gaji_perbulan" value="{{ old('gaji_perbulan', $berangkat->gaji_perbulan) }}">
                     @error('gaji_perbulan')
                         <div class="invalid-feedback">

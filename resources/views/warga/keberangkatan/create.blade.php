@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="biaya_pemberangkatan">Biaya Pemberangkatan</label>
+                                <label for="biaya_pemberangkatan">Biaya Pemberangkatan (IDR)</label>
                                 <input type="number" id="biaya_pemberangkatan" name="biaya_pemberangkatan" class="form-control" value="{{ old('biaya_pemberangkatan') }}" step="0.01" required>
                                 @error('biaya_pemberangkatan')
                                     <div class="text-danger">{{ $message }}</div>
@@ -126,7 +126,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="gaji_perbulan">Gaji Per Bulan</label>
+                                <label for="gaji_perbulan">Gaji Per Bulan (IDR)</label>
                                 <input type="number" id="gaji_perbulan" name="gaji_perbulan" class="form-control" value="{{ old('gaji_perbulan') }}" step="0.01" required>
                                 @error('gaji_perbulan')
                                     <div class="text-danger">{{ $message }}</div>

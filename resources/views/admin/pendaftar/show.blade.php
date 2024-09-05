@@ -18,6 +18,10 @@
                     <td>{{ $user->nik }}</td>
                 </tr>
                 <tr>
+                    <th><strong>Email Address:</strong></th>
+                    <td>{{ $user->email }}</td>
+                </tr>
+                <tr>
                     <th><strong>Nama Lengkap:</strong></th>
                     <td>{{ $user->nama }}</td>
                 </tr>
@@ -59,7 +63,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><strong>Pendapatan Perbulan:</strong></th>
+                    <th><strong>Pendapatan Perbulan (IDR):</strong></th>
                     <td>{{ number_format($user->pendapatan_perbulan, 2, ',', '.') }}</td>
                 </tr>
                 <tr>
