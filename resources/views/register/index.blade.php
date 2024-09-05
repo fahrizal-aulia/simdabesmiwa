@@ -194,6 +194,7 @@
                 <div class="form-group">
                     <label for="nik">NIK/Code</label>
                     <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" id="nik" placeholder="NIK" required value="{{ old('nik') }}">
+                    <div id="nik-error" class="invalid-feedback" style="display: none;"></div>
                     @error('nik')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -336,6 +337,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" required>
+                    <div id="password-error" class="invalid-feedback" style="display: none;"></div>
                     @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -393,5 +395,39 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            // Function to check the length of NIK
+            $('#nik').on('input', function() {
+                var nik = $(this).val();
+                var nikError = $('#nik-error');
+
+                if (nik.length < 16 || nik.length > 16) {
+                    nikError.text('NIK harus terdiri dari 16 karakter.');
+                    nikError.show();
+                    $(this).addClass('is-invalid');
+                } else {
+                    nikError.hide();
+                    $(this).removeClass('is-invalid');
+                }
+            });
+
+            // Function to check the length of Password
+            $('#password').on('input', function() {
+                var password = $(this).val();
+                var passwordError = $('#password-error');
+
+                if (password.length < 8 ) {
+                    passwordError.text('Password harus terdiri dari 8 karakter.');
+                    passwordError.show();
+                    $(this).addClass('is-invalid');
+                } else {
+                    passwordError.hide();
+                    $(this).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
