@@ -162,6 +162,10 @@ class DatabaseSeeder extends Seeder
             ],
             // Tambahkan data user lain sesuai kebutuhan
         ]);
+        DB::table('Hewan')->insert(['nama_hewan' => 'Mark 1', 'latitude' => -7.295885, 'longitude' => 112.73529]);
+        DB::table('Hewan')->insert(['nama_hewan' => 'Mark 2', 'latitude' => -7.296885, 'longitude' => 112.73629]);
+        DB::table('Hewan')->insert(['nama_hewan' => 'Mark 3', 'latitude' => -7.294885, 'longitude' => 112.73429]);
+
 
         $this->call([
             KotaSeeder::class,
